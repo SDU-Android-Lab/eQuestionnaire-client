@@ -24,7 +24,7 @@ public class MyActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_front);// 显示front
+		setContentView(R.layout.main_layout_front);// 显示front
 
 		// 显示正面
 		layoutA = (ViewGroup) findViewById(R.id.layout_front);
@@ -69,7 +69,7 @@ public class MyActivity extends Activity {
 
 	// B面转到A面所在位置
 	public void B2A(Rotate3d rightAnimation) {
-		setContentView(R.layout.layout_right);
+		setContentView(R.layout.main_layout_right);
 		layoutB = (ViewGroup) findViewById(R.id.layout_right);
 		layoutB.startAnimation(rightAnimation);
 
@@ -94,7 +94,7 @@ public class MyActivity extends Activity {
 
 	// D面转到A面所在位置
 	public void D2A(Rotate3d leftAnimation) {
-		setContentView(R.layout.layout_left);
+		setContentView(R.layout.main_layout_left);
 		layoutD = (ViewGroup) findViewById(R.id.layout_left);
 		layoutD.startAnimation(leftAnimation);
 
@@ -119,7 +119,7 @@ public class MyActivity extends Activity {
 
 	// A面转到D面所在位置
 	public void A2D(Rotate3d rightAnimation) {
-		setContentView(R.layout.layout_front);
+		setContentView(R.layout.main_layout_front);
 		layoutA = (ViewGroup) findViewById(R.id.layout_front);
 		layoutA.startAnimation(rightAnimation);
 
@@ -142,7 +142,7 @@ public class MyActivity extends Activity {
 
 	// C面转到D面所在位置
 	public void C2D(Rotate3d leftAnimation) {
-		setContentView(R.layout.layout_back);
+		setContentView(R.layout.main_layout_back);
 		layoutC = (ViewGroup) findViewById(R.id.layout_back);
 		layoutC.startAnimation(leftAnimation);
 
@@ -165,7 +165,7 @@ public class MyActivity extends Activity {
 
 	// C面转到B面所在位置
 	public void C2B(Rotate3d rightAnimation) {
-		setContentView(R.layout.layout_back);
+		setContentView(R.layout.main_layout_back);
 		layoutC = (ViewGroup) findViewById(R.id.layout_back);
 		layoutC.startAnimation(rightAnimation);
 
@@ -188,7 +188,7 @@ public class MyActivity extends Activity {
 
 	// A面转到B面所在位置
 	public void A2B(Rotate3d leftAnimation) {
-		setContentView(R.layout.layout_front);
+		setContentView(R.layout.main_layout_front);
 		layoutA = (ViewGroup) findViewById(R.id.layout_front);
 		layoutA.startAnimation(leftAnimation);
 
@@ -211,7 +211,7 @@ public class MyActivity extends Activity {
 
 	// D面转到C面所在位置
 	public void D2C(Rotate3d rightAnimation) {
-		setContentView(R.layout.layout_left);
+		setContentView(R.layout.main_layout_left);
 		layoutD = (ViewGroup) findViewById(R.id.layout_left);
 		layoutD.startAnimation(rightAnimation);
 
@@ -234,7 +234,7 @@ public class MyActivity extends Activity {
 
 	// B面转到C面所在位置
 	public void B2C(Rotate3d leftAnimation) {
-		setContentView(R.layout.layout_right);
+		setContentView(R.layout.main_layout_right);
 		layoutB = (ViewGroup) findViewById(R.id.layout_right);
 		layoutB.startAnimation(leftAnimation);
 
