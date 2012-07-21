@@ -1,7 +1,7 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
-import sdu.equestionnaire.layouts.Rotate3d;
+import sdu.equestionnaire.animations.Rotate3d;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

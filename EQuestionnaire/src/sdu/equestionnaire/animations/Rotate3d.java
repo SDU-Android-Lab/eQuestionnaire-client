@@ -1,4 +1,4 @@
-package sdu.equestionnaire.layouts;
+package sdu.equestionnaire.animations;
 
 import android.graphics.Camera;
 import android.graphics.Matrix;
