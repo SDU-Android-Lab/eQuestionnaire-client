@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class MyActivity extends Activity {
+public class MainActivity extends Activity {
 
 	private int mCenterX = 160;
 	private int mCenterY = 0;
