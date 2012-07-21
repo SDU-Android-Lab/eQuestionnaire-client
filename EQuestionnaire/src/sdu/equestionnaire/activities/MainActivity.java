@@ -1,5 +1,8 @@
-package sdu.equestionnaire;
+package sdu.equestionnaire.activities;
 
+import sdu.equestionnaire.R;
+import sdu.equestionnaire.R.layout;
+import sdu.equestionnaire.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
