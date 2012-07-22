@@ -5,22 +5,22 @@ import android.graphics.Matrix;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
-public class Rotate3d extends Animation {
+/**
+ * 
+ * @author lhy
+ * 
+ */
+public class SquareRotate extends Animation {
 	private float mFromDegree;
 	private float mToDegree;
 	private float mCenterX;
 	private float mCenterY;
-	private float mLeft;
-	private float mTop;
 	private Camera mCamera;
-	private static final String TAG = "Rotate3d";
 
-	public Rotate3d(float fromDegree, float toDegree, float left, float top,
-			float centerX, float centerY) {
+	public SquareRotate(float fromDegree, float toDegree, float left,
+			float top, float centerX, float centerY) {
 		this.mFromDegree = fromDegree;
 		this.mToDegree = toDegree;
-		this.mLeft = left;
-		this.mTop = top;
 		this.mCenterX = centerX;
 		this.mCenterY = centerY;
 

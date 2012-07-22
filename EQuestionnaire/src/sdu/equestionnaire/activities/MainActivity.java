@@ -1,13 +1,19 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
-import sdu.equestionnaire.animations.Rotate3d;
+import sdu.equestionnaire.animations.SquareRotate;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/**
+ * 
+ * @author lhy
+ * 
+ */
 public class MainActivity extends Activity {
 
 	private int mCenterX = 160;
@@ -17,15 +23,23 @@ public class MainActivity extends Activity {
 	private ViewGroup layoutB;
 	private ViewGroup layoutD;
 
-	private Rotate3d leftAnimation;
-	private Rotate3d rightAnimation;
+	private SquareRotate leftAnimation;
+	private SquareRotate rightAnimation;
+	
+	private DisplayMetrics disManager;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_layout_front);// 显示front
-
+		disManager = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(disManager);
+		final int screenWidth = disManager.widthPixels;
+		final int screenHeight = disManager.heightPixels;
+		mCenterX = screenWidth >> 1;
+		
+		
 		// 显示正面
 		layoutA = (ViewGroup) findViewById(R.id.layout_front);
 		Button leftBtn = (Button) findViewById(R.id.front_leftBtn);
@@ -49,8 +63,8 @@ public class MainActivity extends Activity {
 
 	// 左旋转
 	public void initFirst() {
-		leftAnimation = new Rotate3d(0, -90, 0.0f, 0.0f, mCenterX, mCenterY);
-		rightAnimation = new Rotate3d(90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
+		leftAnimation = new SquareRotate(0, -90, 0.0f, 0.0f, mCenterX, mCenterY);
+		rightAnimation = new SquareRotate(90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
 		leftAnimation.setFillAfter(true);
 		leftAnimation.setDuration(1000);
 		rightAnimation.setFillAfter(true);
@@ -59,8 +73,8 @@ public class MainActivity extends Activity {
 
 	// 右旋转
 	public void initSecond() {
-		leftAnimation = new Rotate3d(-90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
-		rightAnimation = new Rotate3d(0, 90, 0.0f, 0.0f, mCenterX, mCenterY);
+		leftAnimation = new SquareRotate(-90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
+		rightAnimation = new SquareRotate(0, 90, 0.0f, 0.0f, mCenterX, mCenterY);
 		leftAnimation.setFillAfter(true);
 		leftAnimation.setDuration(1000);
 		rightAnimation.setFillAfter(true);
@@ -68,7 +82,7 @@ public class MainActivity extends Activity {
 	}
 
 	// B面转到A面所在位置
-	public void B2A(Rotate3d rightAnimation) {
+	public void B2A(SquareRotate rightAnimation) {
 		setContentView(R.layout.main_layout_right);
 		layoutB = (ViewGroup) findViewById(R.id.layout_right);
 		layoutB.startAnimation(rightAnimation);
@@ -93,7 +107,7 @@ public class MainActivity extends Activity {
 	}
 
 	// D面转到A面所在位置
-	public void D2A(Rotate3d leftAnimation) {
+	public void D2A(SquareRotate leftAnimation) {
 		setContentView(R.layout.main_layout_left);
 		layoutD = (ViewGroup) findViewById(R.id.layout_left);
 		layoutD.startAnimation(leftAnimation);
@@ -118,7 +132,7 @@ public class MainActivity extends Activity {
 	}
 
 	// A面转到D面所在位置
-	public void A2D(Rotate3d rightAnimation) {
+	public void A2D(SquareRotate rightAnimation) {
 		setContentView(R.layout.main_layout_front);
 		layoutA = (ViewGroup) findViewById(R.id.layout_front);
 		layoutA.startAnimation(rightAnimation);
@@ -141,7 +155,7 @@ public class MainActivity extends Activity {
 	}
 
 	// C面转到D面所在位置
-	public void C2D(Rotate3d leftAnimation) {
+	public void C2D(SquareRotate leftAnimation) {
 		setContentView(R.layout.main_layout_back);
 		layoutC = (ViewGroup) findViewById(R.id.layout_back);
 		layoutC.startAnimation(leftAnimation);
@@ -164,7 +178,7 @@ public class MainActivity extends Activity {
 	}
 
 	// C面转到B面所在位置
-	public void C2B(Rotate3d rightAnimation) {
+	public void C2B(SquareRotate rightAnimation) {
 		setContentView(R.layout.main_layout_back);
 		layoutC = (ViewGroup) findViewById(R.id.layout_back);
 		layoutC.startAnimation(rightAnimation);
@@ -187,7 +201,7 @@ public class MainActivity extends Activity {
 	}
 
 	// A面转到B面所在位置
-	public void A2B(Rotate3d leftAnimation) {
+	public void A2B(SquareRotate leftAnimation) {
 		setContentView(R.layout.main_layout_front);
 		layoutA = (ViewGroup) findViewById(R.id.layout_front);
 		layoutA.startAnimation(leftAnimation);
@@ -210,7 +224,7 @@ public class MainActivity extends Activity {
 	}
 
 	// D面转到C面所在位置
-	public void D2C(Rotate3d rightAnimation) {
+	public void D2C(SquareRotate rightAnimation) {
 		setContentView(R.layout.main_layout_left);
 		layoutD = (ViewGroup) findViewById(R.id.layout_left);
 		layoutD.startAnimation(rightAnimation);
@@ -233,7 +247,7 @@ public class MainActivity extends Activity {
 	}
 
 	// B面转到C面所在位置
-	public void B2C(Rotate3d leftAnimation) {
+	public void B2C(SquareRotate leftAnimation) {
 		setContentView(R.layout.main_layout_right);
 		layoutB = (ViewGroup) findViewById(R.id.layout_right);
 		layoutB.startAnimation(leftAnimation);
