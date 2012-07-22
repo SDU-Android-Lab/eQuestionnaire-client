@@ -4,7 +4,10 @@ import sdu.equestionnaire.R;
 import sdu.equestionnaire.net.ConnectionDetector;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +15,7 @@ import android.provider.Settings;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,8 +33,11 @@ public class LoginActivity extends Activity {
 
 	private EditText account_edit;
 	private EditText password_edit;
+	private CheckBox savePassword_cb;
+	private CheckBox autoLogin_cb;
 	private Button login_btn;
 
+	private SharedPreferences sp;
 	private ConnectionDetector detector;
 	private Handler handler;
 
@@ -40,6 +47,7 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_layout);
 
+		sp = this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
 		detector = new ConnectionDetector(getApplicationContext());
 		handler = new Handler() {
 			@SuppressLint("ParserError")
@@ -74,10 +82,34 @@ public class LoginActivity extends Activity {
 		initListener();
 	}
 
+	/**
+	 * 初始化控件
+	 */
 	private void initWidget() {
 		login_btn = (Button) findViewById(R.id.login_btn_login);
 		account_edit = (EditText) findViewById(R.id.login_edit_account);
 		password_edit = (EditText) findViewById(R.id.login_edit_pwd);
+		savePassword_cb = (CheckBox) findViewById(R.id.login_cb_savepwd);
+			autoLogin_cb = (CheckBox) findViewById(R.id.login_cb_auto);
+		initSavedAccount();
+		if (sp.getBoolean("auto", false)) {
+			account_edit.setText(sp.getString("uname", null));
+			password_edit.setText(sp.getString("upswd", null));
+			savePassword_cb.setChecked(true);
+
+		}
+
+	}
+
+	/**
+	 * 初始化被记忆的账号
+	 */
+	private void initSavedAccount() {
+		if (sp.getBoolean("save", false)) {
+			account_edit.setText(sp.getString("uname", null));
+			password_edit.setText(sp.getString("upswd", null));
+			savePassword_cb.setChecked(false);
+		}
 	}
 
 	private void initListener() {
@@ -91,6 +123,34 @@ public class LoginActivity extends Activity {
 				} else {
 					String accout = account_edit.getText().toString();
 					String password = password_edit.getText().toString();
+					boolean autoLogin = savePassword_cb.isChecked();
+					if (autoLogin) {
+						String nameValue = sp.getString("uname", null);
+						String pswdValue = sp.getString("upswd", null);
+						if (nameValue == null || pswdValue == null) {
+							Editor editor = sp.edit();
+							editor.putString("uname", accout);
+							editor.putString("upswd", password);
+							editor.putBoolean("auto", true);
+							editor.putBoolean("save", true);
+							editor.commit();
+
+						} else {
+							Editor editor = sp.edit();
+							editor.putString("uname", accout);
+							editor.putString("upswd", password);
+							editor.putBoolean("auto", true);
+							editor.commit();
+
+						}
+					} else {
+						Editor editor = sp.edit();
+						editor.putString("uname", null);
+						editor.putString("upswd", null);
+						editor.putBoolean("auto", false);
+						editor.commit();
+
+					}
 					/*
 					 * 连接服务器
 					 */

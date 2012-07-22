@@ -132,7 +132,7 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/login_cb_visible"
+                    android:id="@+id/login_cb_auto"
                     style="@style/MyCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
