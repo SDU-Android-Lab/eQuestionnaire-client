@@ -2,6 +2,7 @@ package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
 import sdu.equestionnaire.net.ConnectionDetector;
+import sdu.equestionnaire.user.UserInfo;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -79,6 +80,8 @@ public class LoginActivity extends Activity {
 
 		};
 		initWidget();
+		initSavedAccount();
+		autoLogin();
 		initListener();
 	}
 
@@ -90,15 +93,7 @@ public class LoginActivity extends Activity {
 		account_edit = (EditText) findViewById(R.id.login_edit_account);
 		password_edit = (EditText) findViewById(R.id.login_edit_pwd);
 		savePassword_cb = (CheckBox) findViewById(R.id.login_cb_savepwd);
-			autoLogin_cb = (CheckBox) findViewById(R.id.login_cb_auto);
-		initSavedAccount();
-		if (sp.getBoolean("auto", false)) {
-			account_edit.setText(sp.getString("uname", null));
-			password_edit.setText(sp.getString("upswd", null));
-			savePassword_cb.setChecked(true);
-
-		}
-
+		autoLogin_cb = (CheckBox) findViewById(R.id.login_cb_auto);
 	}
 
 	/**
@@ -106,15 +101,48 @@ public class LoginActivity extends Activity {
 	 */
 	private void initSavedAccount() {
 		if (sp.getBoolean("save", false)) {
-			account_edit.setText(sp.getString("uname", null));
-			password_edit.setText(sp.getString("upswd", null));
-			savePassword_cb.setChecked(false);
+			String uname = sp.getString("uname", null);
+			String upswd = sp.getString("upswd", null);
+			account_edit.setText(uname);
+			password_edit.setText(upswd);
+			savePassword_cb.setChecked(true);
+			UserInfo.user_name = uname;
+			UserInfo.user_password = upswd;
 		}
 	}
 
+	/**
+	 * 自动登录
+	 */
+	private void autoLogin() {
+		if (sp.getBoolean("auto", false)) {
+			boolean in = login();
+			if (in) {
+				Message msg = handler.obtainMessage();
+				msg.what = CONFIRM_SUCCESS;
+				handler.sendMessage(msg);
+			} else {
+				Message msg = handler.obtainMessage();
+				msg.what = CONFIRM_FAILED;
+				handler.sendMessage(msg);
+			}
+		}
+	}
+
+	/**
+	 * 登录
+	 * 
+	 * @return -true 如果登录成功 - false 登录失败
+	 */
+	private boolean login() {
+		return true;
+	}
+
+	/**
+	 * 添加监听器
+	 */
 	private void initListener() {
 		login_btn.setOnClickListener(new OnClickListener() {
-
 			public void onClick(View v) {
 				if (!detector.isConnectingToInternet()) {
 					Message msg = handler.obtainMessage();
@@ -123,40 +151,30 @@ public class LoginActivity extends Activity {
 				} else {
 					String accout = account_edit.getText().toString();
 					String password = password_edit.getText().toString();
-					boolean autoLogin = savePassword_cb.isChecked();
-					if (autoLogin) {
-						String nameValue = sp.getString("uname", null);
-						String pswdValue = sp.getString("upswd", null);
-						if (nameValue == null || pswdValue == null) {
-							Editor editor = sp.edit();
-							editor.putString("uname", accout);
-							editor.putString("upswd", password);
-							editor.putBoolean("auto", true);
-							editor.putBoolean("save", true);
-							editor.commit();
-
-						} else {
-							Editor editor = sp.edit();
-							editor.putString("uname", accout);
-							editor.putString("upswd", password);
-							editor.putBoolean("auto", true);
-							editor.commit();
-
-						}
-					} else {
-						Editor editor = sp.edit();
-						editor.putString("uname", null);
-						editor.putString("upswd", null);
-						editor.putBoolean("auto", false);
-						editor.commit();
-
-					}
+					boolean savePswd = savePassword_cb.isChecked();
 					/*
 					 * 连接服务器
 					 */
-					Message msg = handler.obtainMessage();
-					msg.what = CONFIRM_SUCCESS;// or CONFIRM_FAILED
-					handler.sendMessage(msg);
+					boolean in = login();
+					if (in) {
+						if (savePswd) {
+							Editor editor = sp.edit();
+							editor.putString("uname", accout);
+							editor.putString("upswd", password);
+							editor.putBoolean("auto", autoLogin_cb.isChecked());
+							editor.putBoolean("save", savePswd);
+							editor.commit();
+							UserInfo.user_name = accout;
+							UserInfo.user_password = password;
+						}
+						Message msg = handler.obtainMessage();
+						msg.what = CONFIRM_SUCCESS;
+						handler.sendMessage(msg);
+					} else {
+						Message msg = handler.obtainMessage();
+						msg.what = CONFIRM_FAILED;
+						handler.sendMessage(msg);
+					}
 				}
 			}
 		});
