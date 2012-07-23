@@ -69,8 +69,8 @@ public class LoginActivity extends Activity {
 					Intent intent1 = new Intent();
 					intent1.setClass(LoginActivity.this, MainActivity.class);
 					LoginActivity.this.startActivity(intent1);
-					overridePendingTransition(R.anim.hyperspace_in,
-							R.anim.hyperspace_out);
+//					overridePendingTransition(R.anim.hyperspace_in,
+//							R.anim.hyperspace_out);
 					LoginActivity.this.finish();
 					break;
 				case CONFIRM_FAILED:

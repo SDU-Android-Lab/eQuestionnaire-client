@@ -3,14 +3,14 @@ package sdu.equestionnaire.activities;
 import sdu.equestionnaire.R;
 import sdu.equestionnaire.animations.SquareRotate;
 import android.app.Activity;
-import android.graphics.PointF;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * 
@@ -45,19 +45,19 @@ public class MainActivity extends Activity {
 
 		// œ‘ æ’˝√Ê
 		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
-		Button leftBtn = (Button) findViewById(R.id.front_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.front_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
 		leftBtn.setEnabled(true);
 		rightBtn.setEnabled(true);
 
 		setFrontListener();
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallFront_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallFront_rightMoveHandle();
 				v.setEnabled(false);
@@ -165,8 +165,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main_layout_right);
 		layoutRight = (ViewGroup) findViewById(R.id.layout_right);
 		layoutRight.startAnimation(rightAnimation);
-		Button leftBtn = (Button) findViewById(R.id.right_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.right_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.right_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.right_rightBtn);
 		leftBtn.setEnabled(true);
 		rightBtn.setEnabled(true);
 
@@ -185,13 +185,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallRight_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallRight_rightMoveHandle();
 				v.setEnabled(false);
@@ -204,8 +204,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main_layout_front);
 		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
 		layoutFront.startAnimation(leftAnimation);
-		Button leftBtn = (Button) findViewById(R.id.front_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.front_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
 
 		layoutFront.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -222,13 +222,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallFront_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallFront_rightMoveHandle();
 				v.setEnabled(false);
@@ -241,8 +241,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main_layout_left);
 		layoutLeft = (ViewGroup) findViewById(R.id.layout_left);
 		layoutLeft.startAnimation(leftAnimation);
-		Button leftBtn = (Button) findViewById(R.id.left_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.left_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.left_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.left_rightBtn);
 		leftBtn.setEnabled(true);
 		rightBtn.setEnabled(true);
 
@@ -261,13 +261,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallLeft_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallLeft_rightMoveHandle();
 				v.setEnabled(false);
@@ -280,8 +280,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main_layout_front);
 		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
 		layoutFront.startAnimation(rightAnimation);
-		Button leftBtn = (Button) findViewById(R.id.front_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.front_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
 
 		layoutFront.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -298,13 +298,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallFront_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallFront_rightMoveHandle();
 				v.setEnabled(false);
@@ -318,8 +318,8 @@ public class MainActivity extends Activity {
 		layoutBack = (ViewGroup) findViewById(R.id.layout_back);
 		layoutBack.startAnimation(leftAnimation);
 
-		Button leftBtn = (Button) findViewById(R.id.back_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.back_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
 
 		layoutBack.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -336,13 +336,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallBack_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallBack_rightMoveHandle();
 				v.setEnabled(false);
@@ -356,8 +356,8 @@ public class MainActivity extends Activity {
 		layoutLeft = (ViewGroup) findViewById(R.id.layout_left);
 		layoutLeft.startAnimation(rightAnimation);
 
-		Button leftBtn = (Button) findViewById(R.id.left_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.left_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.left_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.left_rightBtn);
 
 		layoutLeft.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -374,13 +374,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallLeft_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallLeft_rightMoveHandle();
 				v.setEnabled(false);
@@ -394,8 +394,8 @@ public class MainActivity extends Activity {
 		layoutBack = (ViewGroup) findViewById(R.id.layout_back);
 		layoutBack.startAnimation(rightAnimation);
 
-		Button leftBtn = (Button) findViewById(R.id.back_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.back_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
 
 		layoutBack.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -412,13 +412,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallBack_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallBack_rightMoveHandle();
 				v.setEnabled(false);
@@ -432,8 +432,8 @@ public class MainActivity extends Activity {
 		layoutRight = (ViewGroup) findViewById(R.id.layout_right);
 		layoutRight.startAnimation(leftAnimation);
 
-		Button leftBtn = (Button) findViewById(R.id.right_leftBtn);
-		Button rightBtn = (Button) findViewById(R.id.right_rightBtn);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.right_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.right_rightBtn);
 
 		layoutRight.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -450,13 +450,13 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
-		leftBtn.setOnClickListener(new Button.OnClickListener() {
+		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallRight_leftMoveHandle();
 				v.setEnabled(false);
 			}
 		});
-		rightBtn.setOnClickListener(new Button.OnClickListener() {
+		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallRight_rightMoveHandle();
 				v.setEnabled(false);
