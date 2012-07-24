@@ -1,31 +1,34 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:orientation="horizontal" >
+    android:shrinkColumns="0,1,2,3" >
 
-    <ImageButton
-        android:id="@+id/main_menu_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@layout/main_menu_home" />
+    <TableRow>
 
-    <ImageButton
-        android:id="@+id/main_menu_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@layout/main_menu_question" />
+        <ImageButton
+            android:id="@+id/main_menu_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@layout/main_menu_home" />
 
-    <ImageButton
-        android:id="@+id/main_menu_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@layout/main_menu_account" />
+        <ImageButton
+            android:id="@+id/main_menu_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@layout/main_menu_question" />
 
-    <ImageButton
-        android:id="@+id/main_menu_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@layout/main_menu_setting" />
+        <ImageButton
+            android:id="@+id/main_menu_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@layout/main_menu_account" />
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/main_menu_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@layout/main_menu_setting" />
+    </TableRow>
+
+</TableLayout>

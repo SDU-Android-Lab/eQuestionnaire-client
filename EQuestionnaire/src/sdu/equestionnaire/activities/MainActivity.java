@@ -213,7 +213,7 @@ public class MainActivity extends Activity {
 					tabButtonSelectd = v;
 
 				}
-				wallLeft_leftMoveHandle();
+				wallLeft_rightMoveHandle();
 			}
 		});
 		menu_setting.setOnClickListener(new OnClickListener() {
