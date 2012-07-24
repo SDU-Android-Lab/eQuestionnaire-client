@@ -6,6 +6,7 @@
     android:background="@drawable/main_bg" >
 
     <RelativeLayout
+        android:id="@+id/main_right_relativelayout01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" >
@@ -33,7 +34,9 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_right_menu"
+        android:layout_below="@+id/main_right_relativelayout01" >
 
         <ListView
             android:id="@+id/menuList"
@@ -44,11 +47,11 @@
             android:fadingEdge="none"
             android:listSelector="@drawable/main_question_item_bg"
             android:scrollingCache="false"
-            android:visibility="invisible" />
+            android:visibility="visible" />
     </LinearLayout>
 
     <include
-        android:id="@+id/main_menu"
+        android:id="@+id/main_right_menu"
         layout="@layout/main_menu_layout" >
     </include>
 

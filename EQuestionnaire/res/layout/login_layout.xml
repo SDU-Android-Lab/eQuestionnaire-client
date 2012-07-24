@@ -41,7 +41,7 @@
                 android:layout_marginTop="5.0dip"
                 android:layout_toRightOf="@+id/faceImg"
                 android:background="@drawable/login_edit_login"
-                android:hint="@string/strInputAccHint"
+                android:hint="@string/login_strInputAccHint"
                 android:inputType="number"
                 android:maxLength="10"
                 android:paddingLeft="45.0sp"
@@ -57,7 +57,7 @@
                 android:layout_marginRight="15.0sp"
                 android:gravity="center_vertical"
                 android:paddingLeft="7.0sp"
-                android:text="@string/strAccInputLabel"
+                android:text="@string/login_strAccInputLabel"
                 android:textColor="#ff3f3f3f"
                 android:textSize="16.0dip" />
 
@@ -94,7 +94,7 @@
                 android:layout_alignTop="@+id/login_edit_pwd"
                 android:gravity="center_vertical"
                 android:paddingLeft="7.0sp"
-                android:text="@string/strPswInputLabel"
+                android:text="@string/login_strPswInputLabel"
                 android:textColor="#ff3f3f3f"
                 android:textSize="16.0dip" />
 
@@ -106,7 +106,7 @@
                 android:button="@drawable/login_btn_check"
                 android:checked="true"
                 android:paddingLeft="25.0px"
-                android:text="@string/opt_remember"
+                android:text="@string/login_opt_remember"
                 android:textColor="#ff222222"
                 android:textSize="16.0sp" />
 
@@ -118,7 +118,7 @@
                 android:layout_below="@+id/TextView02"
                 android:layout_marginRight="12.0dip"
                 android:layout_marginTop="7.0px"
-                android:text="@string/login" />
+                android:text="@string/login_in" />
         </RelativeLayout>
 
         <TableLayout
@@ -136,7 +136,7 @@
                     style="@style/MyCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/opt_hideLogin"
+                    android:text="@string/login_opt_hideLogin"
                     android:textColor="#7fffffff" />
 
                 <CheckBox
@@ -145,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="@string/opt_openVibra"
+                    android:text="@string/login_opt_openVibra"
                     android:textColor="#7fffffff" />
             </TableRow>
 
@@ -156,7 +156,7 @@
                     style="@style/MyCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/opt_acceptGroupMsg"
+                    android:text="@string/login_opt_acceptGroupMsg"
                     android:textColor="#7fffffff" />
 
                 <CheckBox
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="@string/opt_silent"
+                    android:text="@string/login_opt_silent"
                     android:textColor="#7fffffff" />
             </TableRow>
         </TableLayout>
