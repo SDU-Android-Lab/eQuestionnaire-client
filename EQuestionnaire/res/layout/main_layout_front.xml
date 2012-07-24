@@ -20,4 +20,9 @@
         android:layout_alignParentRight="true"
         android:background="@drawable/main_rright_btn" />
 
+    <include
+        android:id="@+id/main_menu"
+        layout="@layout/main_menu_layout" >
+    </include>
+
 </RelativeLayout>
