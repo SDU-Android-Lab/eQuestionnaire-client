@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 		final int screenWidth = disManager.widthPixels;
 		final int screenHeight = disManager.heightPixels;
 		mCenterX = screenWidth >> 1;
-
+		mCenterY = screenHeight >> 1;
 		// 显示正面
 		setFront(null);
 	}
@@ -421,9 +421,9 @@ public class MainActivity extends Activity {
 		leftAnimation = new SquareRotate(0, -90, 0.0f, 0.0f, mCenterX, mCenterY);
 		rightAnimation = new SquareRotate(90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
 		leftAnimation.setFillAfter(true);
-		leftAnimation.setDuration(1000);
+		leftAnimation.setDuration(600);
 		rightAnimation.setFillAfter(true);
-		rightAnimation.setDuration(1000);
+		rightAnimation.setDuration(600);
 	}
 
 	// 右旋转
@@ -431,9 +431,9 @@ public class MainActivity extends Activity {
 		leftAnimation = new SquareRotate(-90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
 		rightAnimation = new SquareRotate(0, 90, 0.0f, 0.0f, mCenterX, mCenterY);
 		leftAnimation.setFillAfter(true);
-		leftAnimation.setDuration(1000);
+		leftAnimation.setDuration(600);
 		rightAnimation.setFillAfter(true);
-		rightAnimation.setDuration(1000);
+		rightAnimation.setDuration(600);
 	}
 
 	// B面转到A面所在位置
