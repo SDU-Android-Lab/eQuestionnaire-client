@@ -37,7 +37,6 @@ public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		disManager = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(disManager);
 		final int screenWidth = disManager.widthPixels;

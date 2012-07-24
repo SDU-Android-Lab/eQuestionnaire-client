@@ -3,8 +3,7 @@
     android:id="@+id/layout_right"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_02"
-    android:orientation="horizontal" >
+    android:background="@drawable/main_bg" >
 
     <ImageButton
         android:id="@+id/right_leftBtn"
