@@ -13,11 +13,22 @@
         android:layout_alignParentLeft="true"
         android:background="@drawable/main_rleft_btn" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="参与调查" />
+
     <ImageButton
         android:id="@+id/right_rightBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:background="@drawable/main_rright_btn" />
+
+    <include
+        android:id="@+id/main_menu"
+        layout="@layout/main_menu_layout" >
+    </include>
 
 </RelativeLayout>

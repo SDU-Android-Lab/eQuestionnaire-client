@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 	private ViewGroup layoutBack;
 	private ViewGroup layoutRight;
 	private ViewGroup layoutLeft;
+	private View tabButtonSelectd;
 
 	private SquareRotate leftAnimation;
 	private SquareRotate rightAnimation;
@@ -36,7 +37,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_layout_front);// 显示front
+
 		disManager = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(disManager);
 		final int screenWidth = disManager.widthPixels;
@@ -44,28 +45,24 @@ public class MainActivity extends Activity {
 		mCenterX = screenWidth >> 1;
 
 		// 显示正面
-		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
-		leftBtn.setEnabled(true);
-		rightBtn.setEnabled(true);
-
-		setFrontListener();
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallFront_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallFront_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setFront(null);
 	}
 
-	private void setFrontListener() {
+	private void setFront(SquareRotate rorate) {
+		setContentView(R.layout.main_layout_front);
+		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
+		if (rorate != null)
+			layoutFront.startAnimation(rorate);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
+		ImageButton menu_home = (ImageButton) findViewById(R.id.main_menu_home);
+		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
+		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
+		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+
+		menu_home.setSelected(true);
+		tabButtonSelectd = menu_home;
+
 		layoutFront.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN)
@@ -81,9 +78,80 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
+		leftBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallFront_leftMoveHandle();
+			}
+		});
+		rightBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallFront_rightMoveHandle();
+			}
+		});
+		menu_home.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+				}
+			}
+		});
+		menu_question.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+				}
+
+				wallFront_leftMoveHandle();
+			}
+		});
+		menu_account.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+				}
+				wallFront_leftMoveHandle();
+				wallRight_leftMoveHandle();
+
+			}
+		});
+		menu_setting.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallFront_rightMoveHandle();
+			}
+		});
 	}
 
-	private void setLeftListener() {
+	private void setLeft(SquareRotate rorate) {
+		setContentView(R.layout.main_layout_left);
+		layoutLeft = (ViewGroup) findViewById(R.id.layout_left);
+		if (rorate != null)
+			layoutLeft.startAnimation(rorate);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.left_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.left_rightBtn);
+		ImageButton menu_home = (ImageButton) findViewById(R.id.main_menu_home);
+		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
+		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
+		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+
+		menu_setting.setSelected(true);
+		tabButtonSelectd = menu_setting;
+
 		layoutLeft.setOnTouchListener(new OnTouchListener() {
 
 			public boolean onTouch(View v, MotionEvent event) {
@@ -92,17 +160,92 @@ public class MainActivity extends Activity {
 				if (event.getAction() == MotionEvent.ACTION_UP) {
 					int tEndX = (int) event.getX();
 					if (tEndX - tStartX > 30) {
-						wallFront_rightMoveHandle();
+						wallLeft_rightMoveHandle();
 					} else if (tStartX - tEndX > 30) {
-						wallFront_leftMoveHandle();
+						wallLeft_leftMoveHandle();
 					}
 				}
 				return true;
 			}
 		});
+		leftBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallLeft_leftMoveHandle();
+
+			}
+		});
+		rightBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallLeft_rightMoveHandle();
+
+			}
+		});
+		menu_home.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+				}
+				wallLeft_leftMoveHandle();
+			}
+		});
+		menu_question.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallLeft_rightMoveHandle();
+				wallBack_rightMoveHandle();
+
+			}
+		});
+		menu_account.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallLeft_leftMoveHandle();
+			}
+		});
+		menu_setting.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+			}
+		});
+
 	}
 
-	private void setRightListener() {
+	private void setRight(SquareRotate rorate) {
+		setContentView(R.layout.main_layout_right);
+		layoutRight = (ViewGroup) findViewById(R.id.layout_right);
+		if (rorate != null)
+			layoutRight.startAnimation(rorate);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.right_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.right_rightBtn);
+		ImageButton menu_home = (ImageButton) findViewById(R.id.main_menu_home);
+		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
+		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
+		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+
+		menu_question.setSelected(true);
+		tabButtonSelectd = menu_question;
+
 		layoutRight.setOnTouchListener(new OnTouchListener() {
 
 			public boolean onTouch(View v, MotionEvent event) {
@@ -111,17 +254,91 @@ public class MainActivity extends Activity {
 				if (event.getAction() == MotionEvent.ACTION_UP) {
 					int tEndX = (int) event.getX();
 					if (tEndX - tStartX > 30) {
-						wallFront_rightMoveHandle();
+						wallRight_rightMoveHandle();
 					} else if (tStartX - tEndX > 30) {
-						wallFront_leftMoveHandle();
+						wallRight_leftMoveHandle();
 					}
 				}
 				return true;
 			}
 		});
+		leftBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallRight_leftMoveHandle();
+
+			}
+		});
+		rightBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallRight_rightMoveHandle();
+
+			}
+		});
+		menu_home.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+				}
+				wallRight_rightMoveHandle();
+			}
+		});
+		menu_question.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+			}
+		});
+		menu_account.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallRight_leftMoveHandle();
+			}
+		});
+		menu_setting.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallRight_rightMoveHandle();
+				wallFront_rightMoveHandle();
+			}
+		});
+
 	}
 
-	private void setBackListener() {
+	private void setBack(SquareRotate rorate) {
+		setContentView(R.layout.main_layout_back);
+		layoutBack = (ViewGroup) findViewById(R.id.layout_back);
+		if (rorate != null)
+			layoutBack.startAnimation(rorate);
+		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
+		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
+		ImageButton menu_home = (ImageButton) findViewById(R.id.main_menu_home);
+		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
+		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
+		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+
+		menu_account.setSelected(true);
+		tabButtonSelectd = menu_account;
+
 		layoutBack.setOnTouchListener(new OnTouchListener() {
 
 			public boolean onTouch(View v, MotionEvent event) {
@@ -130,14 +347,74 @@ public class MainActivity extends Activity {
 				if (event.getAction() == MotionEvent.ACTION_UP) {
 					int tEndX = (int) event.getX();
 					if (tEndX - tStartX > 30) {
-						wallFront_rightMoveHandle();
+						wallBack_rightMoveHandle();
 					} else if (tStartX - tEndX > 30) {
-						wallFront_leftMoveHandle();
+						wallBack_leftMoveHandle();
 					}
 				}
 				return true;
 			}
 		});
+		leftBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallBack_leftMoveHandle();
+
+			}
+		});
+		rightBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wallBack_rightMoveHandle();
+
+			}
+		});
+		menu_home.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+				}
+				wallBack_rightMoveHandle();
+				wallRight_rightMoveHandle();
+			}
+		});
+		menu_question.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallBack_rightMoveHandle();
+			}
+		});
+		menu_account.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+			}
+		});
+		menu_setting.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				boolean selected = v.isSelected();
+				if (!selected) {
+					tabButtonSelectd.setSelected(false);
+					v.setSelected(true);
+					tabButtonSelectd = v;
+
+				}
+				wallBack_leftMoveHandle();
+			}
+		});
+
 	}
 
 	// 左旋转
@@ -162,306 +439,42 @@ public class MainActivity extends Activity {
 
 	// B面转到A面所在位置
 	private void right2front(SquareRotate rightAnimation) {
-		setContentView(R.layout.main_layout_right);
-		layoutRight = (ViewGroup) findViewById(R.id.layout_right);
-		layoutRight.startAnimation(rightAnimation);
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.right_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.right_rightBtn);
-		leftBtn.setEnabled(true);
-		rightBtn.setEnabled(true);
-
-		layoutRight.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallRight_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallRight_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallRight_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallRight_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setRight(rightAnimation);
 	}
 
 	// A面转到B面所在位置
 	private void front2right(SquareRotate leftAnimation) {
-		setContentView(R.layout.main_layout_front);
-		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
-		layoutFront.startAnimation(leftAnimation);
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
-
-		layoutFront.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallFront_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallFront_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallFront_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallFront_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setFront(leftAnimation);
 	}
 
 	// D面转到A面所在位置
 	private void left2front(SquareRotate leftAnimation) {
-		setContentView(R.layout.main_layout_left);
-		layoutLeft = (ViewGroup) findViewById(R.id.layout_left);
-		layoutLeft.startAnimation(leftAnimation);
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.left_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.left_rightBtn);
-		leftBtn.setEnabled(true);
-		rightBtn.setEnabled(true);
-
-		layoutLeft.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallLeft_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallLeft_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallLeft_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallLeft_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setLeft(leftAnimation);
 	}
 
 	// A面转到D面所在位置
 	private void front2left(SquareRotate rightAnimation) {
-		setContentView(R.layout.main_layout_front);
-		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
-		layoutFront.startAnimation(rightAnimation);
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.front_rightBtn);
-
-		layoutFront.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallFront_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallFront_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallFront_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallFront_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setFront(rightAnimation);
 	}
 
 	// C面转到D面所在位置
 	private void back2left(SquareRotate leftAnimation) {
-		setContentView(R.layout.main_layout_back);
-		layoutBack = (ViewGroup) findViewById(R.id.layout_back);
-		layoutBack.startAnimation(leftAnimation);
-
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
-
-		layoutBack.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallBack_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallBack_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallBack_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallBack_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setBack(leftAnimation);
 	}
 
 	// D面转到C面所在位置
 	private void left2back(SquareRotate rightAnimation) {
-		setContentView(R.layout.main_layout_left);
-		layoutLeft = (ViewGroup) findViewById(R.id.layout_left);
-		layoutLeft.startAnimation(rightAnimation);
-
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.left_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.left_rightBtn);
-
-		layoutLeft.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallLeft_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallLeft_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallLeft_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallLeft_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setLeft(rightAnimation);
 	}
 
 	// C面转到B面所在位置
 	private void back2right(SquareRotate rightAnimation) {
-		setContentView(R.layout.main_layout_back);
-		layoutBack = (ViewGroup) findViewById(R.id.layout_back);
-		layoutBack.startAnimation(rightAnimation);
-
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
-
-		layoutBack.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallBack_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallBack_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallBack_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallBack_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setBack(rightAnimation);
 	}
 
 	// B面转到C面所在位置
 	private void right2back(SquareRotate leftAnimation) {
-		setContentView(R.layout.main_layout_right);
-		layoutRight = (ViewGroup) findViewById(R.id.layout_right);
-		layoutRight.startAnimation(leftAnimation);
-
-		ImageButton leftBtn = (ImageButton) findViewById(R.id.right_leftBtn);
-		ImageButton rightBtn = (ImageButton) findViewById(R.id.right_rightBtn);
-
-		layoutRight.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-					tStartX = (int) event.getX();
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int tEndX = (int) event.getX();
-					if (tEndX - tStartX > 30) {
-						wallRight_rightMoveHandle();
-					} else if (tStartX - tEndX > 30) {
-						wallRight_leftMoveHandle();
-					}
-				}
-				return true;
-			}
-		});
-		leftBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallRight_leftMoveHandle();
-				v.setEnabled(false);
-			}
-		});
-		rightBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				wallRight_rightMoveHandle();
-				v.setEnabled(false);
-			}
-		});
+		setRight(leftAnimation);
 	}
 
 	// A位于正面时向左旋转 直到B位于正面

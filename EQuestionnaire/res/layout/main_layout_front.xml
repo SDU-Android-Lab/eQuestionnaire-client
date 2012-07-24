@@ -3,8 +3,7 @@
     android:id="@+id/layout_front"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_01"
-    android:orientation="horizontal" >
+    android:background="@drawable/background_01" >
 
     <ImageButton
         android:id="@+id/front_leftBtn"
@@ -12,6 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:background="@drawable/main_rleft_btn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="主页" />
 
     <ImageButton
         android:id="@+id/front_rightBtn"
