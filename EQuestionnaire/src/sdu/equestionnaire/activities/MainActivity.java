@@ -1,6 +1,7 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
+import sdu.equestionnaire.adapter.MenuListAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 /**
  * 
@@ -43,7 +45,6 @@ public class MainActivity extends Activity {
 		final int screenHeight = disManager.heightPixels;
 		mCenterX = screenWidth >> 1;
 		mCenterY = screenHeight >> 1;
-		// 显示正面
 		setFront(null);
 	}
 
@@ -242,6 +243,10 @@ public class MainActivity extends Activity {
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
 
+		MenuListAdapter menuListAdapter = new MenuListAdapter(this, 0);
+		ListView menuList = (ListView) findViewById(R.id.menuList);
+		menuList.setAdapter(menuListAdapter);
+
 		menu_question.setSelected(true);
 		tabButtonSelectd = menu_question;
 
@@ -416,7 +421,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	// 左旋转
+	// 锟斤拷锟斤拷转
 	private void initFirst() {
 		leftAnimation = new SquareRotate(0, -90, 0.0f, 0.0f, mCenterX, mCenterY);
 		rightAnimation = new SquareRotate(90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
@@ -426,7 +431,7 @@ public class MainActivity extends Activity {
 		rightAnimation.setDuration(600);
 	}
 
-	// 右旋转
+	// 锟斤拷锟斤拷转
 	private void initSecond() {
 		leftAnimation = new SquareRotate(-90, 0, 0.0f, 0.0f, mCenterX, mCenterY);
 		rightAnimation = new SquareRotate(0, 90, 0.0f, 0.0f, mCenterX, mCenterY);
@@ -436,96 +441,96 @@ public class MainActivity extends Activity {
 		rightAnimation.setDuration(600);
 	}
 
-	// B面转到A面所在位置
+	// B锟斤拷转锟斤拷A锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void right2front(SquareRotate rightAnimation) {
 		setRight(rightAnimation);
 	}
 
-	// A面转到B面所在位置
+	// A锟斤拷转锟斤拷B锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void front2right(SquareRotate leftAnimation) {
 		setFront(leftAnimation);
 	}
 
-	// D面转到A面所在位置
+	// D锟斤拷转锟斤拷A锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void left2front(SquareRotate leftAnimation) {
 		setLeft(leftAnimation);
 	}
 
-	// A面转到D面所在位置
+	// A锟斤拷转锟斤拷D锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void front2left(SquareRotate rightAnimation) {
 		setFront(rightAnimation);
 	}
 
-	// C面转到D面所在位置
+	// C锟斤拷转锟斤拷D锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void back2left(SquareRotate leftAnimation) {
 		setBack(leftAnimation);
 	}
 
-	// D面转到C面所在位置
+	// D锟斤拷转锟斤拷C锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void left2back(SquareRotate rightAnimation) {
 		setLeft(rightAnimation);
 	}
 
-	// C面转到B面所在位置
+	// C锟斤拷转锟斤拷B锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void back2right(SquareRotate rightAnimation) {
 		setBack(rightAnimation);
 	}
 
-	// B面转到C面所在位置
+	// B锟斤拷转锟斤拷C锟斤拷锟斤拷锟斤拷位锟斤拷
 	private void right2back(SquareRotate leftAnimation) {
 		setRight(leftAnimation);
 	}
 
-	// A位于正面时向左旋转 直到B位于正面
+	// A位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷B位锟斤拷锟斤拷锟斤拷
 	private void wallFront_leftMoveHandle() {
 		initFirst();
 		layoutFront.startAnimation(leftAnimation);
 		right2front(rightAnimation);
 	}
 
-	// A位于正面时向右旋转 直到D位于正面
+	// A位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷D位锟斤拷锟斤拷锟斤拷
 	private void wallFront_rightMoveHandle() {
 		initSecond();
 		layoutFront.startAnimation(rightAnimation);
 		left2front(leftAnimation);
 	}
 
-	// D位于正面时向左旋转 直到A位于正面
+	// D位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷A位锟斤拷锟斤拷锟斤拷
 	private void wallLeft_leftMoveHandle() {
 		initFirst();
 		layoutLeft.startAnimation(leftAnimation);
 		front2left(rightAnimation);
 	}
 
-	// D位于正面时向右旋转 直到C位于正面
+	// D位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷C位锟斤拷锟斤拷锟斤拷
 	private void wallLeft_rightMoveHandle() {
 		initSecond();
 		layoutLeft.startAnimation(rightAnimation);
 		back2left(leftAnimation);
 	}
 
-	// B位于正面时向左旋转 直到C位于正面
+	// B位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷C位锟斤拷锟斤拷锟斤拷
 	private void wallRight_leftMoveHandle() {
 		initFirst();
 		layoutRight.startAnimation(leftAnimation);
 		back2right(rightAnimation);
 	}
 
-	// B位于正面时向右旋转 直到A位于正面
+	// B位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷A位锟斤拷锟斤拷锟斤拷
 	private void wallRight_rightMoveHandle() {
 		initSecond();
 		layoutRight.startAnimation(rightAnimation);
 		front2right(leftAnimation);
 	}
 
-	// C位于正面时向左旋转 直到D位于正面
+	// C位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷D位锟斤拷锟斤拷锟斤拷
 	private void wallBack_leftMoveHandle() {
 		initFirst();
 		layoutBack.startAnimation(leftAnimation);
 		left2back(rightAnimation);
 	}
 
-	// C位于正面时向左旋转 直到B位于正面
+	// C位锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷转 直锟斤拷B位锟斤拷锟斤拷锟斤拷
 	private void wallBack_rightMoveHandle() {
 		initSecond();
 		layoutBack.startAnimation(rightAnimation);

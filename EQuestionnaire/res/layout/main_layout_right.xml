@@ -30,8 +30,23 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="参与调查" />
-    
-   
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/menuList"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#000000"
+            android:divider="#00000000"
+            android:fadingEdge="none"
+            android:listSelector="@drawable/main_question_item_bg"
+            android:scrollingCache="false"
+            android:visibility="invisible" />
+    </LinearLayout>
+
     <include
         android:id="@+id/main_menu"
         layout="@layout/main_menu_layout" >
