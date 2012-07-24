@@ -40,7 +40,7 @@
                 android:layout_marginRight="5.0dip"
                 android:layout_marginTop="5.0dip"
                 android:layout_toRightOf="@+id/faceImg"
-                android:background="@drawable/qq_edit_login"
+                android:background="@drawable/login_edit_login"
                 android:hint="@string/strInputAccHint"
                 android:inputType="number"
                 android:maxLength="10"
@@ -69,7 +69,7 @@
                 android:layout_alignRight="@+id/login_edit_account"
                 android:layout_alignTop="@+id/login_edit_account"
                 android:layout_marginRight="1.0dip"
-                android:background="@drawable/more_select" />
+                android:background="@drawable/login_more_select" />
 
             <EditText
                 android:id="@+id/login_edit_pwd"
@@ -79,7 +79,7 @@
                 android:layout_alignRight="@+id/login_edit_account"
                 android:layout_below="@+id/login_edit_account"
                 android:layout_marginRight="1.0dip"
-                android:background="@drawable/qq_edit_login"
+                android:background="@drawable/login_edit_login"
                 android:inputType="textPassword"
                 android:maxLength="16"
                 android:paddingLeft="45.0sp"
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/login_btn_login"
-                android:button="@drawable/qq_btn_check"
+                android:button="@drawable/login_btn_check"
                 android:checked="true"
                 android:paddingLeft="25.0px"
                 android:text="@string/opt_remember"
@@ -184,7 +184,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="13.0dip"
             android:layout_marginTop="2.0dip"
-            android:background="@drawable/option"
+            android:background="@drawable/login_option"
             android:clickable="true" />
     </RelativeLayout>
 
