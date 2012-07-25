@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 
 	private void setFront(SquareRotate rorate) {
 		setContentView(R.layout.main_layout_front);
-		layoutFront = (ViewGroup) findViewById(R.id.layout_front);
+		layoutFront = (ViewGroup) findViewById(R.id.main_front);
 		if (rorate != null)
 			layoutFront.startAnimation(rorate);
 		ImageButton leftBtn = (ImageButton) findViewById(R.id.front_leftBtn);
@@ -139,7 +139,7 @@ public class MainActivity extends Activity {
 
 	private void setLeft(SquareRotate rorate) {
 		setContentView(R.layout.main_layout_left);
-		layoutLeft = (ViewGroup) findViewById(R.id.layout_left);
+		layoutLeft = (ViewGroup) findViewById(R.id.main_left);
 		if (rorate != null)
 			layoutLeft.startAnimation(rorate);
 		ImageButton leftBtn = (ImageButton) findViewById(R.id.left_leftBtn);
@@ -233,7 +233,7 @@ public class MainActivity extends Activity {
 
 	private void setRight(SquareRotate rorate) {
 		setContentView(R.layout.main_layout_right);
-		layoutRight = (ViewGroup) findViewById(R.id.layout_right);
+		layoutRight = (ViewGroup) findViewById(R.id.main_right);
 		if (rorate != null)
 			layoutRight.startAnimation(rorate);
 		ImageButton leftBtn = (ImageButton) findViewById(R.id.right_leftBtn);
@@ -251,7 +251,6 @@ public class MainActivity extends Activity {
 		tabButtonSelectd = menu_question;
 
 		layoutRight.setOnTouchListener(new OnTouchListener() {
-
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN)
 					tStartX = (int) event.getX();
@@ -266,16 +265,15 @@ public class MainActivity extends Activity {
 				return true;
 			}
 		});
+
 		leftBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallRight_leftMoveHandle();
-
 			}
 		});
 		rightBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				wallRight_rightMoveHandle();
-
 			}
 		});
 		menu_home.setOnClickListener(new OnClickListener() {
@@ -330,7 +328,7 @@ public class MainActivity extends Activity {
 
 	private void setBack(SquareRotate rorate) {
 		setContentView(R.layout.main_layout_back);
-		layoutBack = (ViewGroup) findViewById(R.id.layout_back);
+		layoutBack = (ViewGroup) findViewById(R.id.main_back);
 		if (rorate != null)
 			layoutBack.startAnimation(rorate);
 		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);

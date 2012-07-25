@@ -12,5 +12,6 @@
     <string name="login_opt_silent">静音登录</string>
     <string name="login_opt_openVibra">开启振动</string>
     <string name="login_opt_acceptGroupMsg">接收群消息</string>
+    <string name="spinner_group">加入分组</string>
 
 </resources>

@@ -32,7 +32,7 @@ public class MenuListAdapter extends BaseAdapter {
 	private int itemCount;
 	private LayoutInflater listInflater;
 	private boolean isPressed[];
-	private int imageId = R.drawable.star_icon;
+	private int imageId = R.drawable.main_question_star_icon;
 	private String textContent = "i love xmu";
 	private final int COUNT = 11;
 	private int pressedId;
@@ -88,7 +88,8 @@ public class MenuListAdapter extends BaseAdapter {
 				"menuText"));
 
 		if (this.isPressed[position] == true)
-			convertView.setBackgroundResource(R.drawable.menu_item_bg_sel);
+			convertView
+					.setBackgroundResource(R.drawable.main_question_item_bg_sel);
 		else
 			convertView.setBackgroundColor(Color.TRANSPARENT);
 
