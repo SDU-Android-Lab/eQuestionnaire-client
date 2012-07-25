@@ -9,8 +9,11 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -23,18 +26,23 @@ public class MainActivity extends Activity {
 	private int mCenterX = 160;
 	private int mCenterY = 0;
 	private int tStartX;
+	private boolean account_editable = false;
 
 	private ViewGroup layoutFront;
 	private ViewGroup layoutBack;
 	private ViewGroup layoutRight;
 	private ViewGroup layoutLeft;
-	private View tabButtonSelectd;
+	private View buttonSelectd;
 
 	private SquareRotate leftAnimation;
 	private SquareRotate rightAnimation;
 
 	private DisplayMetrics disManager;
-
+	
+	 
+	
+	
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +69,7 @@ public class MainActivity extends Activity {
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
 
 		menu_home.setSelected(true);
-		tabButtonSelectd = menu_home;
+		buttonSelectd = menu_home;
 
 		layoutFront.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -92,9 +100,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 				}
 			}
 		});
@@ -102,9 +110,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 				}
 
 				wallFront_leftMoveHandle();
@@ -114,9 +122,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 				}
 				wallFront_leftMoveHandle();
 				wallRight_leftMoveHandle();
@@ -127,9 +135,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallFront_rightMoveHandle();
@@ -150,7 +158,7 @@ public class MainActivity extends Activity {
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
 
 		menu_setting.setSelected(true);
-		tabButtonSelectd = menu_setting;
+		buttonSelectd = menu_setting;
 
 		layoutLeft.setOnTouchListener(new OnTouchListener() {
 
@@ -184,9 +192,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 				}
 				wallLeft_leftMoveHandle();
 			}
@@ -195,9 +203,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallLeft_rightMoveHandle();
@@ -209,9 +217,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallLeft_rightMoveHandle();
@@ -221,9 +229,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 			}
@@ -244,11 +252,11 @@ public class MainActivity extends Activity {
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
 
 		MenuListAdapter menuListAdapter = new MenuListAdapter(this, 0);
-		ListView menuList = (ListView) findViewById(R.id.menuList);
+		ListView menuList = (ListView) findViewById(R.id.question_menuList);
 		menuList.setAdapter(menuListAdapter);
 
 		menu_question.setSelected(true);
-		tabButtonSelectd = menu_question;
+		buttonSelectd = menu_question;
 
 		layoutRight.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -280,9 +288,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 				}
 				wallRight_rightMoveHandle();
 			}
@@ -291,9 +299,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 			}
@@ -302,9 +310,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallRight_leftMoveHandle();
@@ -314,9 +322,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallRight_rightMoveHandle();
@@ -337,9 +345,16 @@ public class MainActivity extends Activity {
 		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+		final EditText account_nameE = (EditText) findViewById(R.id.account_name);
+		final EditText account_phone_numberE = (EditText) findViewById(R.id.account_phoneNumber);
+		final EditText account_addresssE = (EditText) findViewById(R.id.account_address);
+		final EditText account_mailE = (EditText) findViewById(R.id.account_email);
+		final EditText account_infoE = (EditText) findViewById(R.id.account_information);
+		final Button apply = (Button) findViewById(R.id.account_btn_apply);
+		final Button cancel = (Button) findViewById(R.id.account_btn_cancel);
 
 		menu_account.setSelected(true);
-		tabButtonSelectd = menu_account;
+		buttonSelectd = menu_account;
 
 		layoutBack.setOnTouchListener(new OnTouchListener() {
 
@@ -373,9 +388,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 				}
 				wallBack_rightMoveHandle();
 				wallRight_rightMoveHandle();
@@ -385,9 +400,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallBack_rightMoveHandle();
@@ -397,9 +412,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 			}
@@ -408,12 +423,97 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				boolean selected = v.isSelected();
 				if (!selected) {
-					tabButtonSelectd.setSelected(false);
+					buttonSelectd.setSelected(false);
 					v.setSelected(true);
-					tabButtonSelectd = v;
+					buttonSelectd = v;
 
 				}
 				wallBack_leftMoveHandle();
+			}
+		});
+		account_nameE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_addresssE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
+				account_infoE.setFocusableInTouchMode(true);
+				apply.setClickable(true);
+				cancel.setClickable(true);
+				return false;
+			}
+		});
+		account_phone_numberE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_addresssE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
+				account_infoE.setFocusableInTouchMode(true);
+				apply.setEnabled(true);
+				cancel.setEnabled(true);
+				return false;
+			}
+		});
+		account_addresssE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_addresssE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
+				account_infoE.setFocusableInTouchMode(true);
+				apply.setEnabled(true);
+				cancel.setEnabled(true);
+				return false;
+			}
+		});
+		account_mailE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_addresssE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
+				account_infoE.setFocusableInTouchMode(true);
+				apply.setEnabled(true);
+				cancel.setEnabled(true);
+				return false;
+			}
+		});
+		account_infoE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_addresssE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
+				account_infoE.setFocusableInTouchMode(true);
+				apply.setEnabled(true);
+				cancel.setEnabled(true);
+				return false;
 			}
 		});
 

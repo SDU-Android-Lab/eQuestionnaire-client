@@ -59,21 +59,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="姓名:"
+                        android:text="@string/account_name"
                         android:textColor="#ff3f3f3f"
                         android:textSize="16.0dip" />
 
                     <EditText
-                        android:id="@+id/name"
+                        android:id="@+id/account_name"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
                         android:singleLine="true" />
 
                     <sdu.equestionnaire.customUI.PhotoEditorView
-                        android:id="@+id/icon"
+                        android:id="@+id/account_icon"
                         android:layout_width="80dip"
                         android:layout_height="80dip"
                         android:layout_marginLeft="5dip"
@@ -105,12 +106,13 @@
                         android:textSize="16.0dip" />
 
                     <EditText
-                        android:id="@+id/phoneNumber"
+                        android:id="@+id/account_phoneNumber"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
                         android:inputType="number"
                         android:singleLine="true" />
                 </LinearLayout>
@@ -134,7 +136,7 @@
                         android:textSize="16.0dip" />
 
                     <Button
-                        android:id="@+id/birthdayButtonPicker"
+                        android:id="@+id/account_birthdayButtonPicker"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dip"
@@ -163,12 +165,13 @@
                         android:textSize="16.0dip" />
 
                     <EditText
-                        android:id="@+id/address"
+                        android:id="@+id/account_address"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -191,12 +194,13 @@
                         android:textSize="16.0dip" />
 
                     <EditText
-                        android:id="@+id/email"
+                        android:id="@+id/account_email"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -215,46 +219,46 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dip"
-                        android:text="自我描述:"
+                        android:text="工作单位:"
                         android:textColor="#ff3f3f3f"
                         android:textSize="16.0dip" />
 
                     <EditText
-                        android:id="@+id/information"
+                        android:id="@+id/account_information"
                         android:layout_width="fill_parent"
                         android:layout_height="150dip"
                         android:layout_marginTop="10dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
                         android:gravity="left|top"
                         android:maxLines="5"
                         android:singleLine="false" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <Button
+                        android:id="@+id/account_btn_apply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="应用" />
+
+                    <Button
+                        android:id="@+id/account_btn_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="取消" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/main_account_bottom"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="5dip" >
-
-            <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="确定" />
-
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="取消" />
-        </LinearLayout>
     </LinearLayout>
 
     <include

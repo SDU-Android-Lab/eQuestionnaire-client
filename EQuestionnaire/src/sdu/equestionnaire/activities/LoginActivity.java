@@ -21,7 +21,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * µÇÂ½½çÃæ
+ * ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½
  * 
  * @author lhy
  * 
@@ -60,7 +60,7 @@ public class LoginActivity extends Activity {
 				case CONNECTION_SUCCESS:
 					break;
 				case CONNECTION_FAILED:
-					Toast.makeText(LoginActivity.this, "Î´Á¬½ÓÍøÂç",
+					Toast.makeText(LoginActivity.this, "Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
 							Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
 					LoginActivity.this.startActivity(intent);
@@ -86,7 +86,7 @@ public class LoginActivity extends Activity {
 	}
 
 	/**
-	 * ³õÊ¼»¯¿Ø¼þ
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ø¼ï¿½
 	 */
 	private void initWidget() {
 		login_btn = (Button) findViewById(R.id.login_btn_login);
@@ -97,7 +97,7 @@ public class LoginActivity extends Activity {
 	}
 
 	/**
-	 * ³õÊ¼»¯±»¼ÇÒäµÄÕËºÅ
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
 	 */
 	private void initSavedAccount() {
 		if (sp.getBoolean("save", false)) {
@@ -106,13 +106,13 @@ public class LoginActivity extends Activity {
 			account_edit.setText(uname);
 			password_edit.setText(upswd);
 			savePassword_cb.setChecked(true);
-			UserInfo.user_name = uname;
+			UserInfo.user_ID = uname;
 			UserInfo.user_password = upswd;
 		}
 	}
 
 	/**
-	 * ×Ô¶¯µÇÂ¼
+	 * ï¿½Ô¶ï¿½ï¿½ï¿½Â¼
 	 */
 	private void autoLogin() {
 		if (sp.getBoolean("auto", false)) {
@@ -130,16 +130,16 @@ public class LoginActivity extends Activity {
 	}
 
 	/**
-	 * µÇÂ¼
+	 * ï¿½ï¿½Â¼
 	 * 
-	 * @return -true Èç¹ûµÇÂ¼³É¹¦ - false µÇÂ¼Ê§°Ü
+	 * @return -true ï¿½ï¿½ï¿½ï¿½Â¼ï¿½É¹ï¿½ - false ï¿½ï¿½Â¼Ê§ï¿½ï¿½
 	 */
 	private boolean login() {
 		return true;
 	}
 
 	/**
-	 * Ìí¼Ó¼àÌýÆ÷
+	 * ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void initListener() {
 		login_btn.setOnClickListener(new OnClickListener() {
@@ -153,7 +153,7 @@ public class LoginActivity extends Activity {
 					String password = password_edit.getText().toString();
 					boolean savePswd = savePassword_cb.isChecked();
 					/*
-					 * Á¬½Ó·þÎñÆ÷
+					 * ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½
 					 */
 					boolean in = login();
 					if (in) {
@@ -164,7 +164,7 @@ public class LoginActivity extends Activity {
 							editor.putBoolean("auto", autoLogin_cb.isChecked());
 							editor.putBoolean("save", savePswd);
 							editor.commit();
-							UserInfo.user_name = accout;
+							UserInfo.user_ID = accout;
 							UserInfo.user_password = password;
 						}
 						Message msg = handler.obtainMessage();

@@ -5,9 +5,9 @@ public class Person {
 	 * @author sdusjy
 	 */
 	/*
-	 * ¶¨Òå id£¬password£¬ÒÔ¼°×¢²áµÄÀàÐÍ
+	 * ï¿½ï¿½ï¿½ï¿½ idï¿½ï¿½passwordï¿½ï¿½ï¿½Ô¼ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	private int id;
+	private Integer id;
 	private String name;
 	private String email;
 	private String phone;

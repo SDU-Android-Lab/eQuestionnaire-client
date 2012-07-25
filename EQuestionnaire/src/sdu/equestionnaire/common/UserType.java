@@ -2,8 +2,8 @@ package sdu.equestionnaire.common;
 
 public enum UserType {
 	/*
-	 * ÓÃ»§ÊÇµÇÂ¼»¹ÊÇ×¢²á
+	 * ç”¨æˆ·æ˜¯ç™»å½•è¿˜æ˜¯æ³¨å†Œ
 	 */
-    login,regerister
+	login, regerister
 
 }
