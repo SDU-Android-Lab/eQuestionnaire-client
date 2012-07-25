@@ -1,5 +1,8 @@
 package sdu.equestionnaire.activities;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import sdu.equestionnaire.R;
 import sdu.equestionnaire.adapter.HomeAdvertAdapter;
 import sdu.equestionnaire.adapter.HomeListAdapter;
@@ -9,6 +12,8 @@ import sdu.equestionnaire.animations.SquareRotate;
 import sdu.equestionnaire.user.UserInfo;
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,17 +37,46 @@ public class MainActivity extends Activity {
 	private int mCenterX = 160;
 	private int mCenterY = 0;
 	private int tStartX;
+	private int ad_index = 0;
+	private boolean home_in_screen = true;
 
 	private ViewGroup layoutFront;
 	private ViewGroup layoutBack;
 	private ViewGroup layoutRight;
 	private ViewGroup layoutLeft;
 	private View buttonSelectd;
+	private Gallery ad_gallery;
 
 	private SquareRotate leftAnimation;
 	private SquareRotate rightAnimation;
 
 	private DisplayMetrics disManager;
+	private Timer home_ad_timer;
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			if (!home_in_screen)
+				return;
+			switch (msg.what) {
+			case 1:
+				ad_gallery.setSelection(ad_index);
+				break;
+			default:
+				break;
+			}
+		}
+	};
+	private TimerTask ad_task = new TimerTask() {
+		@Override
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			ad_index = ad_gallery.getSelectedItemPosition();
+			ad_index++;
+			handler.sendMessage(message);
+		}
+	};
 
 	/** Called when the activity is first created. */
 	@Override
@@ -55,6 +89,8 @@ public class MainActivity extends Activity {
 		mCenterX = screenWidth >> 1;
 		mCenterY = screenHeight >> 1;
 		setFront(null);
+		home_ad_timer = new Timer();
+		home_ad_timer.schedule(ad_task, 2000, 2000);
 	}
 
 	private void setFront(SquareRotate rorate) {
@@ -68,18 +104,16 @@ public class MainActivity extends Activity {
 		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
-		Gallery ad_gallery = (Gallery) findViewById(R.id.main_home_gallery);
+		ad_gallery = (Gallery) findViewById(R.id.main_home_gallery);
 		ListView list = (ListView) findViewById(R.id.main_home_list);
 
 		HomeAdvertAdapter advert_adapter = new HomeAdvertAdapter(this);
 		ad_gallery.setAdapter(advert_adapter);
 		ad_gallery.setFadingEdgeLength(0);
 		ad_gallery.setSpacing(5);
-		
+
 		HomeListAdapter list_adapter = new HomeListAdapter(this);
 		list.setAdapter(list_adapter);
-		
-		
 
 		menu_home.setSelected(true);
 		buttonSelectd = menu_home;
@@ -555,22 +589,61 @@ public class MainActivity extends Activity {
 
 	// B��ת��A������λ��
 	private void right2front(SquareRotate rightAnimation) {
+		home_in_screen = false;
+		if (home_ad_timer != null) {
+			home_ad_timer.cancel();
+			home_ad_timer = null;
+		}
+		ad_index = 0;
 		setRight(rightAnimation);
 	}
 
 	// A��ת��B������λ��
 	private void front2right(SquareRotate leftAnimation) {
+		home_in_screen = true;
 		setFront(leftAnimation);
+		home_ad_timer = new Timer();
+		ad_task = new TimerTask() {
+			@Override
+			public void run() {
+				Message message = new Message();
+				message.what = 1;
+				ad_index = ad_gallery.getSelectedItemPosition();
+				ad_index++;
+				handler.sendMessage(message);
+			}
+		};
+		home_ad_timer.schedule(ad_task, 2000, 2000);
 	}
 
 	// D��ת��A������λ��
 	private void left2front(SquareRotate leftAnimation) {
+		home_in_screen = false;
+		if (home_ad_timer != null) {
+			home_ad_timer.cancel();
+			home_ad_timer = null;
+		}
+		ad_index = 0;
 		setLeft(leftAnimation);
+
 	}
 
 	// A��ת��D������λ��
 	private void front2left(SquareRotate rightAnimation) {
+		home_in_screen = true;
 		setFront(rightAnimation);
+		home_ad_timer = new Timer();
+		ad_task = new TimerTask() {
+			@Override
+			public void run() {
+				Message message = new Message();
+				message.what = 1;
+				ad_index = ad_gallery.getSelectedItemPosition();
+				ad_index++;
+				handler.sendMessage(message);
+			}
+		};
+		home_ad_timer.schedule(ad_task, 2000, 2000);
 	}
 
 	// C��ת��D������λ��
