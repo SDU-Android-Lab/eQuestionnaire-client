@@ -34,7 +34,7 @@ public class SettingGridAdapter extends BaseAdapter {
 	}
 
 	public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-		paramView = inflater.inflate(R.layout.activity_label_item, null);
+		paramView = inflater.inflate(R.layout.main_settig_grid_item, null);
 		TextView text = (TextView) paramView.findViewById(R.id.activity_name);
 
 		switch (paramInt) {

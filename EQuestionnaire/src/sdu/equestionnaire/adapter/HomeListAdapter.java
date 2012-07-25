@@ -61,7 +61,7 @@ public class HomeListAdapter extends BaseAdapter {
 		Holder holder;
 		if (convertView == null) {
 			holder = new Holder();
-			convertView = inflater.inflate(R.layout.common_listview_text, null);
+			convertView = inflater.inflate(R.layout.main_home_list_item, null);
 			holder.picture = (ImageView) convertView.findViewById(R.id.img_pre);
 			holder.text = (TextView) convertView.findViewById(R.id.text);
 			holder.navigation = (ImageView) convertView.findViewById(R.id.img);
