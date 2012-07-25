@@ -73,8 +73,13 @@ public class MainActivity extends Activity {
 
 		HomeAdvertAdapter advert_adapter = new HomeAdvertAdapter(this);
 		ad_gallery.setAdapter(advert_adapter);
+		ad_gallery.setFadingEdgeLength(0);
+		ad_gallery.setSpacing(5);
+		
 		HomeListAdapter list_adapter = new HomeListAdapter(this);
 		list.setAdapter(list_adapter);
+		
+		
 
 		menu_home.setSelected(true);
 		buttonSelectd = menu_home;
