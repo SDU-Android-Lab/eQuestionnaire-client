@@ -2,7 +2,7 @@ package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
 import sdu.equestionnaire.net.ConnectionDetector;
-import sdu.equestionnaire.user.User;
+import sdu.equestionnaire.user.UserInfo;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -101,16 +101,19 @@ public class LoginActivity extends Activity {
 	 */
 	private void initSavedAccount() {
 		if (sp.getBoolean("save", false)) {
-			int uid = sp.getInt("uid", 0);
+			String uid = sp.getString("uid", "");
 			String upswd = sp.getString("upswd", null);
-			if (uid == 0)
+			if (uid.length() == 0)
 				account_edit.setText("");
 			else
-				account_edit.setText("" + uid);
+				account_edit.setText(uid);
 			password_edit.setText(upswd);
 			savePassword_cb.setChecked(true);
-			User.user_id = uid;
-			User.user_password = upswd;
+			if (uid.length() == 0)
+				UserInfo.user_id = 0;
+			else
+				UserInfo.user_id = Integer.parseInt(uid);
+			UserInfo.user_password = upswd;
 		}
 	}
 
@@ -138,6 +141,15 @@ public class LoginActivity extends Activity {
 	 * @return -true ����¼�ɹ� - false ��¼ʧ��
 	 */
 	private boolean login() {
+		// Connect to server
+		UserInfo.user_name = "dog";
+		UserInfo.user_email = "hahah@163.com";
+		UserInfo.user_phone = "10086";
+		UserInfo.user_province = "山东";
+		UserInfo.user_city = "济南";
+		UserInfo.user_street = "舜华路";
+		UserInfo.user_point = 15;
+
 		return true;
 	}
 
@@ -152,8 +164,7 @@ public class LoginActivity extends Activity {
 					msg.what = CONNECTION_FAILED;
 					handler.sendMessage(msg);
 				} else {
-					int accout = Integer.parseInt(account_edit.getText()
-							.toString());
+					String account = account_edit.getText().toString();
 					String password = password_edit.getText().toString();
 					boolean savePswd = savePassword_cb.isChecked();
 					/*
@@ -163,13 +174,15 @@ public class LoginActivity extends Activity {
 					if (in) {
 						if (savePswd) {
 							Editor editor = sp.edit();
-							editor.putInt("uid", accout);
+							editor.putString("uid", account);
 							editor.putString("upswd", password);
 							editor.putBoolean("auto", autoLogin_cb.isChecked());
 							editor.putBoolean("save", savePswd);
 							editor.commit();
-							User.user_id = accout;
-							User.user_password = password;
+							if (account.length() == 0)
+								UserInfo.user_id = 0;
+							else
+								UserInfo.user_id = Integer.parseInt(account);
 						}
 						Message msg = handler.obtainMessage();
 						msg.what = CONFIRM_SUCCESS;

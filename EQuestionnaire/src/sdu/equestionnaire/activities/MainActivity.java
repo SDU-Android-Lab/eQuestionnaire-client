@@ -3,19 +3,20 @@ package sdu.equestionnaire.activities;
 import sdu.equestionnaire.R;
 import sdu.equestionnaire.adapter.MenuListAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
+import sdu.equestionnaire.user.UserInfo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * 
@@ -26,7 +27,6 @@ public class MainActivity extends Activity {
 	private int mCenterX = 160;
 	private int mCenterY = 0;
 	private int tStartX;
-	private boolean account_editable = false;
 
 	private ViewGroup layoutFront;
 	private ViewGroup layoutBack;
@@ -335,12 +335,14 @@ public class MainActivity extends Activity {
 		layoutBack = (ViewGroup) findViewById(R.id.main_back);
 		if (rorate != null)
 			layoutBack.startAnimation(rorate);
+
 		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
 		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
 		ImageButton menu_home = (ImageButton) findViewById(R.id.main_menu_home);
 		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+		TextView account_pointT = (TextView) findViewById(R.id.account_point);
 		final EditText account_nameE = (EditText) findViewById(R.id.account_name);
 		final EditText account_phone_numberE = (EditText) findViewById(R.id.account_phoneNumber);
 		final EditText account_provinceE = (EditText) findViewById(R.id.account_province);
@@ -349,9 +351,18 @@ public class MainActivity extends Activity {
 		final EditText account_mailE = (EditText) findViewById(R.id.account_email);
 		final Button apply = (Button) findViewById(R.id.account_btn_apply);
 		final Button cancel = (Button) findViewById(R.id.account_btn_cancel);
+		final Button edit = (Button) findViewById(R.id.account_btn_edit);
 
 		menu_account.setSelected(true);
 		buttonSelectd = menu_account;
+
+		account_nameE.setText(UserInfo.user_name);
+		account_phone_numberE.setText(UserInfo.user_phone);
+		account_provinceE.setText(UserInfo.user_province);
+		account_cityE.setText(UserInfo.user_city);
+		account_streetE.setText(UserInfo.user_street);
+		account_mailE.setText(UserInfo.user_email);
+		account_pointT.setText(UserInfo.user_point + "");
 
 		layoutBack.setOnTouchListener(new OnTouchListener() {
 
@@ -428,112 +439,75 @@ public class MainActivity extends Activity {
 				wallBack_leftMoveHandle();
 			}
 		});
-		account_nameE.setOnLongClickListener(new OnLongClickListener() {
 
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_provinceE.setFocusableInTouchMode(true);
-				account_cityE.setFocusableInTouchMode(true);
-				account_streetE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
-				apply.setClickable(true);
-				cancel.setClickable(true);
-				return false;
-			}
-		});
-		account_phone_numberE.setOnLongClickListener(new OnLongClickListener() {
+		edit.setOnClickListener(new OnClickListener() {
 
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_provinceE.setFocusableInTouchMode(true);
-				account_cityE.setFocusableInTouchMode(true);
-				account_streetE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
+			public void onClick(View v) {
+				account_nameE.setEnabled(true);
+				account_phone_numberE.setEnabled(true);
+				account_provinceE.setEnabled(true);
+				account_cityE.setEnabled(true);
+				account_streetE.setEnabled(true);
+				account_mailE.setEnabled(true);
 				apply.setEnabled(true);
 				cancel.setEnabled(true);
-				return false;
+				edit.setEnabled(false);
 			}
 		});
-		account_provinceE.setOnLongClickListener(new OnLongClickListener() {
 
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_provinceE.setFocusableInTouchMode(true);
-				account_cityE.setFocusableInTouchMode(true);
-				account_streetE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
-				apply.setEnabled(true);
-				cancel.setEnabled(true);
-				return false;
+		apply.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				boolean access = false;
+				// ---------------------------------------------
+				// send message to server and wait for the reply
+				//
+				//
+				//
+				// ---------------------------------------------
+				access = true;
+				if (access) {
+					UserInfo.user_name = account_nameE.getText().toString();
+					UserInfo.user_email = account_mailE.getText().toString();
+					UserInfo.user_phone = account_phone_numberE.getText()
+							.toString();
+					UserInfo.user_province = account_provinceE.getText()
+							.toString();
+					UserInfo.user_city = account_cityE.getText().toString();
+					UserInfo.user_street = account_streetE.getText().toString();
+
+					account_nameE.setEnabled(false);
+					account_phone_numberE.setEnabled(false);
+					account_provinceE.setEnabled(false);
+					account_cityE.setEnabled(false);
+					account_streetE.setEnabled(false);
+					account_mailE.setEnabled(false);
+					apply.setEnabled(false);
+					cancel.setEnabled(false);
+					edit.setEnabled(true);
+				}
+
 			}
 		});
-		account_cityE.setOnLongClickListener(new OnLongClickListener() {
+		cancel.setOnClickListener(new OnClickListener() {
 
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_provinceE.setFocusableInTouchMode(true);
-				account_cityE.setFocusableInTouchMode(true);
-				account_streetE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
-				apply.setEnabled(true);
-				cancel.setEnabled(true);
-				return false;
-			}
-		});
-		account_streetE.setOnLongClickListener(new OnLongClickListener() {
+			public void onClick(View v) {
+				account_nameE.setText(UserInfo.user_name);
+				account_phone_numberE.setText(UserInfo.user_phone);
+				account_provinceE.setText(UserInfo.user_province);
+				account_cityE.setText(UserInfo.user_city);
+				account_streetE.setText(UserInfo.user_street);
+				account_mailE.setText(UserInfo.user_email);
 
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_provinceE.setFocusableInTouchMode(true);
-				account_cityE.setFocusableInTouchMode(true);
-				account_streetE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
-				apply.setEnabled(true);
-				cancel.setEnabled(true);
-				return false;
-			}
-		});
-		account_mailE.setOnLongClickListener(new OnLongClickListener() {
-
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_provinceE.setFocusableInTouchMode(true);
-				account_cityE.setFocusableInTouchMode(true);
-				account_streetE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
-				apply.setEnabled(true);
-				cancel.setEnabled(true);
-				return false;
+				account_nameE.setEnabled(false);
+				account_phone_numberE.setEnabled(false);
+				account_provinceE.setEnabled(false);
+				account_cityE.setEnabled(false);
+				account_streetE.setEnabled(false);
+				account_mailE.setEnabled(false);
+				apply.setEnabled(false);
+				cancel.setEnabled(false);
+				edit.setEnabled(true);
 			}
 		});
 	}

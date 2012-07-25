@@ -83,7 +83,7 @@
                                 android:layout_marginLeft="5dip"
                                 android:layout_weight="1"
                                 android:background="@drawable/main_account_edit_text"
-                                android:focusable="false"
+                                android:enabled="false"
                                 android:singleLine="true" />
                         </LinearLayout>
 
@@ -101,6 +101,7 @@
                                 android:textSize="16.0dip" />
 
                             <TextView
+                                android:id="@+id/account_point"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dip"
@@ -149,7 +150,7 @@
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:inputType="number"
                         android:singleLine="true" />
                 </LinearLayout>
@@ -179,7 +180,7 @@
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:singleLine="true"
                         android:text="省份" />
 
@@ -189,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:singleLine="true"
                         android:text="城市" />
 
@@ -199,7 +200,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:singleLine="true"
                         android:text="街道" />
                 </LinearLayout>
@@ -229,7 +230,7 @@
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -239,6 +240,13 @@
                     android:gravity="right"
                     android:orientation="horizontal"
                     android:padding="5dip" >
+
+                    <Button
+                        android:id="@+id/account_btn_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:text="编辑" />
 
                     <Button
                         android:id="@+id/account_btn_apply"
