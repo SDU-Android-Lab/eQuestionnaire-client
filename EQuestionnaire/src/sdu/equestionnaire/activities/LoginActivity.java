@@ -2,7 +2,7 @@ package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
 import sdu.equestionnaire.net.ConnectionDetector;
-import sdu.equestionnaire.user.UserInfo;
+import sdu.equestionnaire.user.User;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -69,8 +69,8 @@ public class LoginActivity extends Activity {
 					Intent intent1 = new Intent();
 					intent1.setClass(LoginActivity.this, MainActivity.class);
 					LoginActivity.this.startActivity(intent1);
-//					overridePendingTransition(R.anim.hyperspace_in,
-//							R.anim.hyperspace_out);
+					// overridePendingTransition(R.anim.hyperspace_in,
+					// R.anim.hyperspace_out);
 					LoginActivity.this.finish();
 					break;
 				case CONFIRM_FAILED:
@@ -101,13 +101,13 @@ public class LoginActivity extends Activity {
 	 */
 	private void initSavedAccount() {
 		if (sp.getBoolean("save", false)) {
-			String uname = sp.getString("uname", null);
+			int uid = sp.getInt("uid", 0);
 			String upswd = sp.getString("upswd", null);
-			account_edit.setText(uname);
+			account_edit.setText(uid);
 			password_edit.setText(upswd);
 			savePassword_cb.setChecked(true);
-			UserInfo.user_ID = uname;
-			UserInfo.user_password = upswd;
+			User.user_id = uid;
+			User.user_password = upswd;
 		}
 	}
 
@@ -149,7 +149,8 @@ public class LoginActivity extends Activity {
 					msg.what = CONNECTION_FAILED;
 					handler.sendMessage(msg);
 				} else {
-					String accout = account_edit.getText().toString();
+					int accout = Integer.parseInt(account_edit.getText()
+							.toString());
 					String password = password_edit.getText().toString();
 					boolean savePswd = savePassword_cb.isChecked();
 					/*
@@ -159,13 +160,13 @@ public class LoginActivity extends Activity {
 					if (in) {
 						if (savePswd) {
 							Editor editor = sp.edit();
-							editor.putString("uname", accout);
+							editor.putInt("uid", accout);
 							editor.putString("upswd", password);
 							editor.putBoolean("auto", autoLogin_cb.isChecked());
 							editor.putBoolean("save", savePswd);
 							editor.commit();
-							UserInfo.user_ID = accout;
-							UserInfo.user_password = password;
+							User.user_id = accout;
+							User.user_password = password;
 						}
 						Message msg = handler.obtainMessage();
 						msg.what = CONFIRM_SUCCESS;
