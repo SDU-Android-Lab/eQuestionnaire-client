@@ -1,6 +1,8 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
+import sdu.equestionnaire.adapter.HomeAdvertAdapter;
+import sdu.equestionnaire.adapter.HomeListAdapter;
 import sdu.equestionnaire.adapter.QuestionListAdapter;
 import sdu.equestionnaire.adapter.SettingGridAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
@@ -15,6 +17,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Gallery;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -65,6 +68,13 @@ public class MainActivity extends Activity {
 		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+		Gallery ad_gallery = (Gallery) findViewById(R.id.main_home_gallery);
+		ListView list = (ListView) findViewById(R.id.main_home_list);
+
+		HomeAdvertAdapter advert_adapter = new HomeAdvertAdapter(this);
+		ad_gallery.setAdapter(advert_adapter);
+		HomeListAdapter list_adapter = new HomeListAdapter(this);
+		list.setAdapter(list_adapter);
 
 		menu_home.setSelected(true);
 		buttonSelectd = menu_home;

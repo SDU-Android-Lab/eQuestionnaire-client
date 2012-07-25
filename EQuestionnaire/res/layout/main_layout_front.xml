@@ -26,6 +26,59 @@
             android:background="@drawable/main_rright_btn" />
     </RelativeLayout>
 
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_front_menu"
+        android:layout_below="@+id/main_front_relativelayout01" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="今日关注" />
+
+                <Gallery
+                    android:id="@+id/main_home_gallery"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="最新上架" />
+
+                <ListView
+                    android:id="@+id/main_home_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="#00000000"
+                    android:divider="#CCCCCC"
+                    android:dividerHeight="1px"
+                    android:scrollbars="none" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <include
         android:id="@+id/main_front_menu"
         layout="@layout/main_menu_layout" >
