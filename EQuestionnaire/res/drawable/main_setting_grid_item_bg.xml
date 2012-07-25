@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/grid_selector_background_focus" android:state_focused="true" android:state_pressed="false"/>
-    <item android:drawable="@drawable/grid_selector_background_pressed" android:state_focused="true" android:state_pressed="true"/>
-    <item android:drawable="@drawable/grid_selector_background_pressed" android:state_focused="false" android:state_pressed="true"/>
+    <item android:drawable="@drawable/main_setting_grid_item_bg_focus" android:state_focused="true" android:state_pressed="false"/>
+    <item android:drawable="@drawable/main_setting_grid_item_bg_pressed" android:state_focused="true" android:state_pressed="true"/>
+    <item android:drawable="@drawable/main_setting_grid_item_bg_pressed" android:state_focused="false" android:state_pressed="true"/>
 
 </selector>
