@@ -13,6 +13,6 @@
     <string name="login_opt_openVibra">开启振动</string>
     <string name="login_opt_acceptGroupMsg">接收群消息</string>
     <string name="account_name">姓名:</string>
-    
+    <string name="account_point">积分:</string>
 
 </resources>

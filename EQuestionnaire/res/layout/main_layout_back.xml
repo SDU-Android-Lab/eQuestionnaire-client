@@ -56,22 +56,59 @@
                     android:orientation="horizontal"
                     android:padding="5dip" >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account_name"
-                        android:textColor="#ff3f3f3f"
-                        android:textSize="16.0dip" />
-
-                    <EditText
-                        android:id="@+id/account_name"
+                    <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dip"
                         android:layout_weight="1"
-                        android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
-                        android:singleLine="true" />
+                        android:gravity="center_vertical"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/account_name"
+                                android:textColor="#ff3f3f3f"
+                                android:textSize="16.0dip" />
+
+                            <EditText
+                                android:id="@+id/account_name"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:layout_weight="1"
+                                android:background="@drawable/main_account_edit_text"
+                                android:focusable="false"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/account_point"
+                                android:textColor="#ff3f3f3f"
+                                android:textSize="16.0dip" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:layout_weight="1"
+                                android:focusable="false"
+                                android:text="0" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <sdu.equestionnaire.customUI.PhotoEditorView
                         android:id="@+id/account_icon"
@@ -131,48 +168,40 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="生日:"
-                        android:textColor="#ff3f3f3f"
-                        android:textSize="16.0dip" />
-
-                    <Button
-                        android:id="@+id/account_birthdayButtonPicker"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dip"
-                        android:layout_weight="1"
-                        android:text="birthday"
-                        android:textColor="#ff3f3f3f"
-                        android:textSize="16.0dip" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15.0px"
-                    android:layout_marginRight="15.0px"
-                    android:layout_marginTop="10.0px"
-                    android:background="@drawable/main_account_layoutbg"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="5dip" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="住址:"
+                        android:text="地址:"
                         android:textColor="#ff3f3f3f"
                         android:textSize="16.0dip" />
 
                     <EditText
-                        android:id="@+id/account_address"
-                        android:layout_width="fill_parent"
+                        android:id="@+id/account_province"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dip"
                         android:layout_weight="1"
                         android:background="@drawable/main_account_edit_text"
                         android:focusable="false"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="省份" />
+
+                    <EditText
+                        android:id="@+id/account_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
+                        android:singleLine="true"
+                        android:text="城市" />
+
+                    <EditText
+                        android:id="@+id/account_street"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:focusable="false"
+                        android:singleLine="true"
+                        android:text="街道" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -202,38 +231,6 @@
                         android:background="@drawable/main_account_edit_text"
                         android:focusable="false"
                         android:singleLine="true" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15.0px"
-                    android:layout_marginRight="15.0px"
-                    android:layout_marginTop="10.0px"
-                    android:background="@drawable/main_account_layoutbg"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dip" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dip"
-                        android:text="工作单位:"
-                        android:textColor="#ff3f3f3f"
-                        android:textSize="16.0dip" />
-
-                    <EditText
-                        android:id="@+id/account_information"
-                        android:layout_width="fill_parent"
-                        android:layout_height="150dip"
-                        android:layout_marginTop="10dip"
-                        android:layout_weight="1"
-                        android:background="@drawable/main_account_edit_text"
-                        android:focusable="false"
-                        android:gravity="left|top"
-                        android:maxLines="5"
-                        android:singleLine="false" />
                 </LinearLayout>
 
                 <LinearLayout

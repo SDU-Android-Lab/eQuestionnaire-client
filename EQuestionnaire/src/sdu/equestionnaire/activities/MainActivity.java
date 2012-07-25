@@ -38,11 +38,7 @@ public class MainActivity extends Activity {
 	private SquareRotate rightAnimation;
 
 	private DisplayMetrics disManager;
-	
-	 
-	
-	
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -347,9 +343,10 @@ public class MainActivity extends Activity {
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
 		final EditText account_nameE = (EditText) findViewById(R.id.account_name);
 		final EditText account_phone_numberE = (EditText) findViewById(R.id.account_phoneNumber);
-		final EditText account_addresssE = (EditText) findViewById(R.id.account_address);
+		final EditText account_provinceE = (EditText) findViewById(R.id.account_province);
+		final EditText account_cityE = (EditText) findViewById(R.id.account_city);
+		final EditText account_streetE = (EditText) findViewById(R.id.account_street);
 		final EditText account_mailE = (EditText) findViewById(R.id.account_email);
-		final EditText account_infoE = (EditText) findViewById(R.id.account_information);
 		final Button apply = (Button) findViewById(R.id.account_btn_apply);
 		final Button cancel = (Button) findViewById(R.id.account_btn_cancel);
 
@@ -440,9 +437,10 @@ public class MainActivity extends Activity {
 					return false;
 				account_nameE.setFocusableInTouchMode(true);
 				account_phone_numberE.setFocusableInTouchMode(true);
-				account_addresssE.setFocusableInTouchMode(true);
+				account_provinceE.setFocusableInTouchMode(true);
+				account_cityE.setFocusableInTouchMode(true);
+				account_streetE.setFocusableInTouchMode(true);
 				account_mailE.setFocusableInTouchMode(true);
-				account_infoE.setFocusableInTouchMode(true);
 				apply.setClickable(true);
 				cancel.setClickable(true);
 				return false;
@@ -457,15 +455,16 @@ public class MainActivity extends Activity {
 					return false;
 				account_nameE.setFocusableInTouchMode(true);
 				account_phone_numberE.setFocusableInTouchMode(true);
-				account_addresssE.setFocusableInTouchMode(true);
+				account_provinceE.setFocusableInTouchMode(true);
+				account_cityE.setFocusableInTouchMode(true);
+				account_streetE.setFocusableInTouchMode(true);
 				account_mailE.setFocusableInTouchMode(true);
-				account_infoE.setFocusableInTouchMode(true);
 				apply.setEnabled(true);
 				cancel.setEnabled(true);
 				return false;
 			}
 		});
-		account_addresssE.setOnLongClickListener(new OnLongClickListener() {
+		account_provinceE.setOnLongClickListener(new OnLongClickListener() {
 
 			public boolean onLongClick(View v) {
 				if (!account_editable)
@@ -474,9 +473,46 @@ public class MainActivity extends Activity {
 					return false;
 				account_nameE.setFocusableInTouchMode(true);
 				account_phone_numberE.setFocusableInTouchMode(true);
-				account_addresssE.setFocusableInTouchMode(true);
+				account_provinceE.setFocusableInTouchMode(true);
+				account_cityE.setFocusableInTouchMode(true);
+				account_streetE.setFocusableInTouchMode(true);
 				account_mailE.setFocusableInTouchMode(true);
-				account_infoE.setFocusableInTouchMode(true);
+				apply.setEnabled(true);
+				cancel.setEnabled(true);
+				return false;
+			}
+		});
+		account_cityE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_provinceE.setFocusableInTouchMode(true);
+				account_cityE.setFocusableInTouchMode(true);
+				account_streetE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
+				apply.setEnabled(true);
+				cancel.setEnabled(true);
+				return false;
+			}
+		});
+		account_streetE.setOnLongClickListener(new OnLongClickListener() {
+
+			public boolean onLongClick(View v) {
+				if (!account_editable)
+					account_editable = true;
+				else
+					return false;
+				account_nameE.setFocusableInTouchMode(true);
+				account_phone_numberE.setFocusableInTouchMode(true);
+				account_provinceE.setFocusableInTouchMode(true);
+				account_cityE.setFocusableInTouchMode(true);
+				account_streetE.setFocusableInTouchMode(true);
+				account_mailE.setFocusableInTouchMode(true);
 				apply.setEnabled(true);
 				cancel.setEnabled(true);
 				return false;
@@ -491,32 +527,15 @@ public class MainActivity extends Activity {
 					return false;
 				account_nameE.setFocusableInTouchMode(true);
 				account_phone_numberE.setFocusableInTouchMode(true);
-				account_addresssE.setFocusableInTouchMode(true);
+				account_provinceE.setFocusableInTouchMode(true);
+				account_cityE.setFocusableInTouchMode(true);
+				account_streetE.setFocusableInTouchMode(true);
 				account_mailE.setFocusableInTouchMode(true);
-				account_infoE.setFocusableInTouchMode(true);
 				apply.setEnabled(true);
 				cancel.setEnabled(true);
 				return false;
 			}
 		});
-		account_infoE.setOnLongClickListener(new OnLongClickListener() {
-
-			public boolean onLongClick(View v) {
-				if (!account_editable)
-					account_editable = true;
-				else
-					return false;
-				account_nameE.setFocusableInTouchMode(true);
-				account_phone_numberE.setFocusableInTouchMode(true);
-				account_addresssE.setFocusableInTouchMode(true);
-				account_mailE.setFocusableInTouchMode(true);
-				account_infoE.setFocusableInTouchMode(true);
-				apply.setEnabled(true);
-				cancel.setEnabled(true);
-				return false;
-			}
-		});
-
 	}
 
 	// ����ת

@@ -103,7 +103,10 @@ public class LoginActivity extends Activity {
 		if (sp.getBoolean("save", false)) {
 			int uid = sp.getInt("uid", 0);
 			String upswd = sp.getString("upswd", null);
-			account_edit.setText(uid);
+			if (uid == 0)
+				account_edit.setText("");
+			else
+				account_edit.setText("" + uid);
 			password_edit.setText(upswd);
 			savePassword_cb.setChecked(true);
 			User.user_id = uid;
