@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import sdu.equestionnaire.R;
-
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -22,10 +20,10 @@ import android.widget.TextView;
 /**
  * MenuList的�?配器
  * 
- * @author acbuwa
+ * @author lhy
  * 
  */
-public class MenuListAdapter extends BaseAdapter {
+public class QuestionListAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<Map<String, Object>> listItems;
@@ -37,36 +35,36 @@ public class MenuListAdapter extends BaseAdapter {
 	private final int COUNT = 11;
 	private int pressedId;
 
-	/* �?��menu item中包含一个imageView和一个TextView */
+	
 	public final class ListItemsView {
 		public ImageView menuIcon;
 		public TextView menuText;
 	}
 
-	public MenuListAdapter(Context context, int pressedId) {
-		// TODO Auto-generated constructor stub
+	public QuestionListAdapter(Context context, int pressedId) {
+		
 		this.context = context;
 		this.pressedId = pressedId;
 		this.init();
 	}
 
 	public int getCount() {
-		// TODO Auto-generated method stub
+		
 		return this.itemCount;
 	}
 
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
+		
 		return position;
 	}
 
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
+		
 		return position;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+		
 		final int po = position;
 		ListItemsView listItemsView;
 		if (convertView == null) {

@@ -5,28 +5,52 @@
     android:layout_height="fill_parent"
     android:background="@drawable/main_bg" >
 
-    <ImageButton
-        android:id="@+id/left_leftBtn"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/main_left_relativelayout01"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/main_rleft_btn" />
+        android:layout_alignParentTop="true" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="功能设定" />
+        <ImageButton
+            android:id="@+id/left_leftBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/main_rleft_btn" />
 
-    <ImageButton
-        android:id="@+id/left_rightBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/main_rright_btn" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="功能设定" />
+
+        <ImageButton
+            android:id="@+id/left_rightBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/main_rright_btn" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/setting_grid"
+        style="@style/CustomGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0px"
+        android:layout_above="@+id/main_left_menu"
+        android:layout_below="@+id/main_left_relativelayout01"
+        android:layout_marginTop="0.0dip"
+        android:layout_weight="1.0"
+        android:columnWidth="60.0dip"
+        android:gravity="center"
+        android:horizontalSpacing="10.0dip"
+        android:numColumns="3"
+        android:paddingTop="20dip"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="20.0dip" />
 
     <include
-        android:id="@+id/main_menu"
+        android:id="@+id/main_left_menu"
         layout="@layout/main_menu_layout" >
     </include>
 

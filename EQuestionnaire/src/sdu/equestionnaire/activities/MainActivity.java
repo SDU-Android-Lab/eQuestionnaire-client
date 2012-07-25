@@ -1,7 +1,8 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
-import sdu.equestionnaire.adapter.MenuListAdapter;
+import sdu.equestionnaire.adapter.QuestionListAdapter;
+import sdu.equestionnaire.adapter.SettingGridAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
 import sdu.equestionnaire.user.UserInfo;
 import android.app.Activity;
@@ -14,6 +15,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -152,6 +154,10 @@ public class MainActivity extends Activity {
 		ImageButton menu_question = (ImageButton) findViewById(R.id.main_menu_question);
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
+		GridView grid = (GridView) findViewById(R.id.setting_grid);
+		SettingGridAdapter adapter = new SettingGridAdapter(this, disManager);
+		grid.setAdapter(adapter);
+		// grid.setOnItemClickListener(mOnClickListener);
 
 		menu_setting.setSelected(true);
 		buttonSelectd = menu_setting;
@@ -247,7 +253,7 @@ public class MainActivity extends Activity {
 		ImageButton menu_account = (ImageButton) findViewById(R.id.main_menu_account);
 		ImageButton menu_setting = (ImageButton) findViewById(R.id.main_menu_setting);
 
-		MenuListAdapter menuListAdapter = new MenuListAdapter(this, 0);
+		QuestionListAdapter menuListAdapter = new QuestionListAdapter(this, 0);
 		ListView menuList = (ListView) findViewById(R.id.question_menuList);
 		menuList.setAdapter(menuListAdapter);
 
