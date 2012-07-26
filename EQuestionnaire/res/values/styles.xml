@@ -14,4 +14,25 @@
         <item name="android:listSelector">@drawable/main_setting_grid_item_bg</item>
     </style>
 
+    <style name="Widget" />
+
+    <style name="Widget.QuickAction" parent="@style/Widget" />
+
+    <style name="Widget.QuickAction.Bar" parent="@style/Widget.QuickAction" />
+
+    <style name="Widget.QuickAction.Item" parent="@style/Widget.QuickAction">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">#ff333333</item>
+        <item name="android:paddingLeft">10.0dip</item>
+        <item name="android:paddingRight">10.0dip</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:drawablePadding">5.0dip</item>
+    </style>
+
+    <style name="Widget.QuickAction.Bar.Item" parent="@style/Widget.QuickAction.Item">
+        <item name="android:background">@drawable/quick_action_bar_item</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">80.0dip</item>
+    </style>
+
 </resources>

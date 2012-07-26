@@ -11,6 +11,7 @@ import sdu.equestionnaire.adapter.SettingGridAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
 import sdu.equestionnaire.user.UserInfo;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,6 +21,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Gallery;
@@ -305,6 +308,17 @@ public class MainActivity extends Activity {
 		QuestionListAdapter menuListAdapter = new QuestionListAdapter(this, 0);
 		ListView menuList = (ListView) findViewById(R.id.question_menuList);
 		menuList.setAdapter(menuListAdapter);
+		menuList.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				Intent intent = new Intent(MainActivity.this,
+						QuestionnaireActivity.class);
+				MainActivity.this.startActivity(intent);
+
+			}
+		});
 
 		menu_question.setSelected(true);
 		buttonSelectd = menu_question;
