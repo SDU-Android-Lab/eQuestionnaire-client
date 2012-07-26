@@ -11,7 +11,10 @@ import sdu.equestionnaire.adapter.SettingGridAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
 import sdu.equestionnaire.user.UserInfo;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +34,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * 
@@ -257,6 +261,15 @@ public class MainActivity extends Activity {
 					//
 					// 账号,哈哈
 					// -----------------------
+					SharedPreferences sp = MainActivity.this
+							.getSharedPreferences("userinfo",
+									Context.MODE_PRIVATE);
+					sp.getBoolean("auto", false);
+					Editor editor = sp.edit();
+					editor.putBoolean("auto", false);
+					editor.commit();
+					Toast.makeText(MainActivity.this, "已设定为非自动登录",
+							Toast.LENGTH_SHORT).show();
 					break;
 				}
 				case 6: {
