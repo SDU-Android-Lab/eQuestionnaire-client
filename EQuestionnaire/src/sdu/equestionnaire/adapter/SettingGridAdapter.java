@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -131,7 +132,6 @@ public class SettingGridAdapter extends BaseAdapter {
 		paramView.setMinimumHeight((int) (96.0F * localDisplayMetrics.density));
 		paramView
 				.setMinimumWidth(((-12 + localDisplayMetrics.widthPixels) / 3));
-
 		return paramView;
 	}
 }

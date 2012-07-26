@@ -60,7 +60,7 @@ public class LoginActivity extends Activity {
 				case CONNECTION_SUCCESS:
 					break;
 				case CONNECTION_FAILED:
-					Toast.makeText(LoginActivity.this, "δ��������",
+					Toast.makeText(LoginActivity.this, "网络异常",
 							Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
 					LoginActivity.this.startActivity(intent);

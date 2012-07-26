@@ -61,16 +61,6 @@
                 android:textColor="#ff3f3f3f"
                 android:textSize="16.0dip" />
 
-            <ImageButton
-                android:id="@+id/ImageButton02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/login_edit_account"
-                android:layout_alignRight="@+id/login_edit_account"
-                android:layout_alignTop="@+id/login_edit_account"
-                android:layout_marginRight="1.0dip"
-                android:background="@drawable/login_more_select" />
-
             <EditText
                 android:id="@+id/login_edit_pwd"
                 android:layout_width="wrap_content"
@@ -109,7 +99,8 @@
                 android:text="@string/login_opt_remember"
                 android:textColor="#ff222222"
                 android:textSize="16.0sp" />
-            <Button
+
+            <Button
                 android:id="@+id/login_btn_login"
                 android:layout_width="130.0px"
                 android:layout_height="42.0px"
@@ -149,14 +140,6 @@
             </TableRow>
 
             <TableRow>
-
-                <CheckBox
-                    android:id="@+id/login_cb_receivegroupmsg"
-                    style="@style/MyCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/login_opt_acceptGroupMsg"
-                    android:textColor="#7fffffff" />
 
                 <CheckBox
                     android:id="@+id/login_cb_quite"

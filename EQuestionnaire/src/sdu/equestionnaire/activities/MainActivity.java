@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -209,7 +210,79 @@ public class MainActivity extends Activity {
 		GridView grid = (GridView) findViewById(R.id.setting_grid);
 		SettingGridAdapter adapter = new SettingGridAdapter(this, disManager);
 		grid.setAdapter(adapter);
-		// grid.setOnItemClickListener(mOnClickListener);
+		grid.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				switch (position) {
+				case 0: {
+					// -----------------------
+					//
+					// 定位,哈哈
+					// -----------------------
+					break;
+				}
+				case 1: {
+					// -----------------------
+					//
+					// 搜索,哈哈
+					// -----------------------
+					break;
+				}
+				case 2: {
+					// -----------------------
+					//
+					// 皮肤,哈哈
+					// -----------------------
+					break;
+				}
+				case 3: {
+					// -----------------------
+					//
+					// 兑换,哈哈
+					// -----------------------
+					break;
+				}
+				case 4: {
+					// -----------------------
+					//
+					// 网络,哈哈
+					// -----------------------
+					Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+					MainActivity.this.startActivity(intent);
+					break;
+				}
+				case 5: {
+					// -----------------------
+					//
+					// 账号,哈哈
+					// -----------------------
+					break;
+				}
+				case 6: {
+					// -----------------------
+					//
+					// 最近浏览,哈哈
+					// -----------------------
+					break;
+				}
+				case 7: {
+					// -----------------------
+					//
+					// 客服,哈哈
+					// -----------------------
+					break;
+				}
+				case 8: {
+					// -----------------------
+					//
+					// 更多,哈哈
+					// -----------------------
+					break;
+				}
+				}
+			}
+		});
 
 		menu_setting.setSelected(true);
 		buttonSelectd = menu_setting;
@@ -312,7 +385,7 @@ public class MainActivity extends Activity {
 
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 				Intent intent = new Intent(MainActivity.this,
 						QuestionnaireActivity.class);
 				MainActivity.this.startActivity(intent);
