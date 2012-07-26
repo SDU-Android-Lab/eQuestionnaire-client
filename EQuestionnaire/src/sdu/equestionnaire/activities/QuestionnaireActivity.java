@@ -88,12 +88,12 @@ public class QuestionnaireActivity extends Activity implements OnClickListener {
 
 	private void prepareQuickActionBar() {
 		this.mBar = new QuickActionBar(this);
-		this.mBar.addQuickAction(new MyQuickAction(this, R.drawable.icon_car,
-				"自驾"));
-		this.mBar.addQuickAction(new MyQuickAction(this, R.drawable.icon_bus,
-				"公共交通"));
-		this.mBar.addQuickAction(new MyQuickAction(this, R.drawable.icon_walk,
-				"步行"));
+		this.mBar.addQuickAction(new MyQuickAction(this,
+				R.drawable.question_model_list, "列表格式"));
+		this.mBar.addQuickAction(new MyQuickAction(this,
+				R.drawable.question_model_grid, "网格格式"));
+		this.mBar.addQuickAction(new MyQuickAction(this,
+				R.drawable.question_model_gallery, "画廊格式"));
 		// this.mBar.setOnQuickActionClickListener(this.mActionListener);
 	}
 
