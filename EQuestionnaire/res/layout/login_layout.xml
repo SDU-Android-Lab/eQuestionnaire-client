@@ -109,8 +109,7 @@
                 android:text="@string/login_opt_remember"
                 android:textColor="#ff222222"
                 android:textSize="16.0sp" />
-
-            <Button
+            <Button
                 android:id="@+id/login_btn_login"
                 android:layout_width="130.0px"
                 android:layout_height="42.0px"
