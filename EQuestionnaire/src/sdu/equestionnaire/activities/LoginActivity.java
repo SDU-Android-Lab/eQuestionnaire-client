@@ -157,9 +157,7 @@ public class LoginActivity extends Activity {
 		p.setId(Integer.parseInt(id));
 		p.setPassword(password);
 		p.setName("dog");
-
 		Messages msg = new Messages(Message_Type.Regesiter, p);
-
 		UserInfo.m_cliient.sendmes(msg);
 
 		UserInfo.user_name = "dog";
@@ -186,6 +184,11 @@ public class LoginActivity extends Activity {
 				} else {
 					String account = account_edit.getText().toString();
 					String password = password_edit.getText().toString();
+					if (account.length() == 0 || password.length() == 0) {
+						Toast.makeText(LoginActivity.this, "用户名或密码不能为空",
+								Toast.LENGTH_LONG).show();
+						return;
+					}
 					boolean savePswd = savePassword_cb.isChecked();
 					/*
 					 * ���ӷ�����
@@ -217,5 +220,4 @@ public class LoginActivity extends Activity {
 		});
 
 	}
-
 }

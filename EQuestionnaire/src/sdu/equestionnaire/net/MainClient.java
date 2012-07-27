@@ -22,7 +22,7 @@ public class MainClient {
 		DefaultIoFilterChainBuilder chain = connector.getFilterChain();
 
 		// �趨�����������һ��һ��(/r/n)�Ķ�ȡ���
-		chain.addLast("myChin", new ProtocolCodecFilter(
+		chain.addLast("codec", new ProtocolCodecFilter(
 				new ObjectSerializationCodecFactory()));
 
 		// ����������Ϣ��������һ��SamplMinaServerHander����
