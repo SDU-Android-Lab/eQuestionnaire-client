@@ -95,7 +95,7 @@
                 android:layout_alignBaseline="@+id/login_btn_login"
                 android:button="@drawable/login_btn_check"
                 android:checked="true"
-                android:paddingLeft="25.0px"
+                android:paddingLeft="38.0px"
                 android:text="@string/login_opt_remember"
                 android:textColor="#ff222222"
                 android:textSize="16.0sp" />
