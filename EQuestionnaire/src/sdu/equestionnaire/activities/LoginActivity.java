@@ -1,8 +1,13 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
+import sdu.equestionnaire.common.Message_Type;
+import sdu.equestionnaire.common.Messages;
+import sdu.equestionnaire.common.Type;
+import sdu.equestionnaire.common.User;
 import sdu.equestionnaire.info.UserInfo;
 import sdu.equestionnaire.net.ConnectionDetector;
+import sdu.equestionnaire.net.MainClient;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -50,6 +55,8 @@ public class LoginActivity extends Activity {
 
 		sp = this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
 		detector = new ConnectionDetector(getApplicationContext());
+		UserInfo.m_cliient = new MainClient();
+
 		handler = new Handler() {
 			@SuppressLint("ParserError")
 			@Override
@@ -122,7 +129,9 @@ public class LoginActivity extends Activity {
 	 */
 	private void autoLogin() {
 		if (sp.getBoolean("auto", false)) {
-			boolean in = login();
+			String uid = sp.getString("uid", "");
+			String upswd = sp.getString("upswd", null);
+			boolean in = login(uid, upswd);
 			if (in) {
 				Message msg = handler.obtainMessage();
 				msg.what = CONFIRM_SUCCESS;
@@ -140,8 +149,19 @@ public class LoginActivity extends Activity {
 	 * 
 	 * @return -true ����¼�ɹ� - false ��¼ʧ��
 	 */
-	private boolean login() {
+	private boolean login(String id, String password) {
 		// Connect to server
+		UserInfo.m_cliient.init();
+		User p = new User();
+		p.setType(Type.vip);
+		p.setId(Integer.parseInt(id));
+		p.setPassword(password);
+		p.setName("dog");
+
+		Messages msg = new Messages(Message_Type.Regesiter, p);
+
+		UserInfo.m_cliient.sendmes(msg);
+
 		UserInfo.user_name = "dog";
 		UserInfo.user_email = "hahah@163.com";
 		UserInfo.user_phone = "10086";
@@ -170,7 +190,7 @@ public class LoginActivity extends Activity {
 					/*
 					 * ���ӷ�����
 					 */
-					boolean in = login();
+					boolean in = login(account, password);
 					if (in) {
 						if (savePswd) {
 							Editor editor = sp.edit();

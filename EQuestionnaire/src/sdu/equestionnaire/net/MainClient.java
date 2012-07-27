@@ -11,12 +11,11 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
 import sdu.equestionnaire.info.HostInfo;
 
 public class MainClient {
-	public static ConnectFuture cf;
-	public static NioSocketConnector connector;
+	public ConnectFuture cf;
+	public NioSocketConnector connector;
 
 	public void init() {
 		// Create TCP/IP connection
-
 		connector = new NioSocketConnector();
 
 		// ����������ݵĹ�����
@@ -27,7 +26,7 @@ public class MainClient {
 				new ObjectSerializationCodecFactory()));
 
 		// ����������Ϣ��������һ��SamplMinaServerHander����
-		connector.setHandler(new SamplMinaClientHander());
+		connector.setHandler(new SamplMinaClientHandler());
 
 		// set connect timeout
 		connector.setConnectTimeout(30);
