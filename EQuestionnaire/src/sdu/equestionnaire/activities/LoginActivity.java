@@ -42,6 +42,7 @@ public class LoginActivity extends Activity {
 	private CheckBox savePassword_cb;
 	private CheckBox autoLogin_cb;
 	private Button login_btn;
+	private Button register_btn;
 
 	private SharedPreferences sp;
 	private ConnectionDetector detector;
@@ -97,6 +98,7 @@ public class LoginActivity extends Activity {
 	 */
 	private void initWidget() {
 		login_btn = (Button) findViewById(R.id.login_btn_login);
+		register_btn = (Button) findViewById(R.id.login_btn_register);
 		account_edit = (EditText) findViewById(R.id.login_edit_account);
 		password_edit = (EditText) findViewById(R.id.login_edit_pwd);
 		savePassword_cb = (CheckBox) findViewById(R.id.login_cb_savepwd);
@@ -158,7 +160,7 @@ public class LoginActivity extends Activity {
 		p.setPassword(password);
 		p.setName("dog");
 		Messages msg = new Messages(Message_Type.Regesiter, p);
-		UserInfo.m_cliient.sendmes(msg);
+		UserInfo.m_cliient.sendmes(p);
 
 		UserInfo.user_name = "dog";
 		UserInfo.user_email = "hahah@163.com";
@@ -218,6 +220,14 @@ public class LoginActivity extends Activity {
 				}
 			}
 		});
+		register_btn.setOnClickListener(new OnClickListener() {
 
+			public void onClick(View v) {
+				Intent intent = new Intent(LoginActivity.this,
+						RegisterActivity.class);
+				LoginActivity.this.startActivity(intent);
+
+			}
+		});
 	}
 }

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_back"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="@drawable/main_back_bg" >
+
+    <RelativeLayout
+        android:id="@+id/main_back_relativelayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageButton
+            android:id="@+id/register_leftBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/main_rleft_btn" />
+
+        <ImageButton
+            android:id="@+id/register_rightBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/main_rright_btn" />
+    </RelativeLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_back_menu"
+        android:layout_below="@+id/main_back_relativelayout01"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:fillViewport="true" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0px"
+                    android:layout_marginRight="15.0px"
+                    android:layout_marginTop="20.0px"
+                    android:background="@drawable/main_account_layoutbg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/account_name"
+                                android:textColor="#ff3f3f3f"
+                                android:textSize="16.0dip" />
+
+                            <EditText
+                                android:id="@+id/register_account_name"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:layout_weight="1"
+                                android:background="@drawable/main_account_edit_text"
+                                android:enabled="false"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/account_point"
+                                android:textColor="#ff3f3f3f"
+                                android:textSize="16.0dip" />
+
+                            <TextView
+                                android:id="@+id/register_account_point"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:layout_weight="1"
+                                android:focusable="false"
+                                android:text="0" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <sdu.equestionnaire.customUI.PhotoEditorView
+                        android:id="@+id/register_account_icon"
+                        android:layout_width="80dip"
+                        android:layout_height="80dip"
+                        android:layout_marginLeft="5dip"
+                        android:background="@drawable/main_account_contact_picture"
+                        android:clickable="true"
+                        android:cropToPadding="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/contact_add_icon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0px"
+                    android:layout_marginRight="15.0px"
+                    android:layout_marginTop="10.0px"
+                    android:background="@drawable/main_account_layoutbg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="号码:"
+                        android:textColor="#ff3f3f3f"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@+id/register_account_phoneNumber"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:enabled="false"
+                        android:inputType="number"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0px"
+                    android:layout_marginRight="15.0px"
+                    android:layout_marginTop="10.0px"
+                    android:background="@drawable/main_account_layoutbg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="地址:"
+                        android:textColor="#ff3f3f3f"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@+id/register_account_province"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:text="省份" />
+
+                    <EditText
+                        android:id="@+id/register_account_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:text="城市" />
+
+                    <EditText
+                        android:id="@+id/register_account_street"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:text="街道" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0px"
+                    android:layout_marginRight="15.0px"
+                    android:layout_marginTop="10.0px"
+                    android:background="@drawable/main_account_layoutbg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="邮箱:"
+                        android:textColor="#ff3f3f3f"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@+id/register_account_email"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/main_account_edit_text"
+                        android:enabled="false"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <Button
+                        android:id="@+id/register_account_btn_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:text="编辑" />
+
+                    <Button
+                        android:id="@+id/account_btn_apply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="应用" />
+
+                    <Button
+                        android:id="@+id/register_account_btn_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="取消" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

@@ -4,8 +4,6 @@ import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 
-import android.widget.Toast;
-
 public class SamplMinaClientHandler implements IoHandler {
 
 	public void exceptionCaught(IoSession arg0, Throwable arg1)

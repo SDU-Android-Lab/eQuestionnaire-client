@@ -30,7 +30,7 @@ public class MainClient {
 
 		// set connect timeout
 		connector.setConnectTimeout(30);
-
+		
 		// ���ӵ���������
 		cf = connector
 				.connect(new InetSocketAddress(HostInfo.IP, HostInfo.Post));

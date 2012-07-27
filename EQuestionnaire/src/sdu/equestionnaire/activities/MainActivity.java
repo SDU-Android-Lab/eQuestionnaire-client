@@ -490,7 +490,6 @@ public class MainActivity extends Activity {
 		layoutBack = (ViewGroup) findViewById(R.id.main_back);
 		if (rorate != null)
 			layoutBack.startAnimation(rorate);
-
 		ImageButton leftBtn = (ImageButton) findViewById(R.id.back_leftBtn);
 		ImageButton rightBtn = (ImageButton) findViewById(R.id.back_rightBtn);
 		ImageButton menu_home = (ImageButton) findViewById(R.id.main_menu_home);
