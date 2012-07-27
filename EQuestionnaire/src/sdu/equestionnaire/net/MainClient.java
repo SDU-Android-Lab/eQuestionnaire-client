@@ -8,6 +8,8 @@ import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.serialization.ObjectSerializationCodecFactory;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
+import sdu.equestionnaire.info.HostInfo;
+
 public class MainClient {
 	public static ConnectFuture cf;
 	public static NioSocketConnector connector;
@@ -31,7 +33,8 @@ public class MainClient {
 		connector.setConnectTimeout(30);
 
 		// ���ӵ���������
-		cf = connector.connect(new InetSocketAddress("localhost", 8899));
+		cf = connector
+				.connect(new InetSocketAddress(HostInfo.IP, HostInfo.Post));
 
 		// Wait for the connection attempt to be finished.
 		cf.awaitUninterruptibly();
