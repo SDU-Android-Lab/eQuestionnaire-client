@@ -1,6 +1,8 @@
 package sdu.equestionnaire.common;
 
-public class Messages {
+import java.io.Serializable;
+
+public class Messages implements Serializable {
 	/*
 	 * messagetype对应的为所选择的类型，看message——type接口
 	 */

@@ -1,8 +1,8 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
+import sdu.equestionnaire.info.UserInfo;
 import sdu.equestionnaire.net.ConnectionDetector;
-import sdu.equestionnaire.user.UserInfo;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;

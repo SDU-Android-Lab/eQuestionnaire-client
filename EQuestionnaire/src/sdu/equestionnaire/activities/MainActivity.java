@@ -9,7 +9,7 @@ import sdu.equestionnaire.adapter.HomeListAdapter;
 import sdu.equestionnaire.adapter.QuestionListAdapter;
 import sdu.equestionnaire.adapter.SettingGridAdapter;
 import sdu.equestionnaire.animations.SquareRotate;
-import sdu.equestionnaire.user.UserInfo;
+import sdu.equestionnaire.info.UserInfo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
