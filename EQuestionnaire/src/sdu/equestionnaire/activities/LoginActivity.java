@@ -26,7 +26,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * ��½����
  * 
  * @author lhy
  * 
@@ -152,25 +151,31 @@ public class LoginActivity extends Activity {
 	 * @return -true ����¼�ɹ� - false ��¼ʧ��
 	 */
 	private boolean login(String id, String password) {
-		// Connect to server
 		UserInfo.m_cliient.init();
 		User p = new User();
 		p.setType(Type.vip);
 		p.setId(Integer.parseInt(id));
 		p.setPassword(password);
-		p.setName("dog");
-		Messages msg = new Messages(Message_Type.Regesiter, p);
-		UserInfo.m_cliient.sendmes(p);
-
-		UserInfo.user_name = "dog";
-		UserInfo.user_email = "hahah@163.com";
-		UserInfo.user_phone = "10086";
-		UserInfo.user_province = "山东";
-		UserInfo.user_city = "济南";
-		UserInfo.user_street = "舜华路";
-		UserInfo.user_point = 15;
-
-		return true;
+		Messages msg = new Messages(Message_Type.LoginIn, p);
+		UserInfo.m_cliient.sendmes(msg);
+		Messages login_info = (Messages) UserInfo.m_cliient.getMessage();
+		Integer i = (Integer) login_info.getObj();
+		if (i == 1) {
+			msg.setMessage_type(Message_Type.Information);
+			UserInfo.m_cliient.sendmes(msg);
+			msg = (Messages) UserInfo.m_cliient.getMessage();
+			User u = (User) msg.getObj();
+			UserInfo.user_name = u.getName();
+			UserInfo.user_email = u.getEmail();
+			UserInfo.user_phone = u.getPhone();
+			UserInfo.user_province = u.getProvince();
+			UserInfo.user_city = u.getCity();
+			UserInfo.user_street = u.getStreet();
+			UserInfo.user_point = u.getPoint();
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
