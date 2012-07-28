@@ -103,7 +103,7 @@
             <Button
                 android:id="@+id/login_btn_login"
                 android:layout_width="130.0px"
-                android:layout_height="38.0px"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/TextView02"
                 android:layout_marginRight="12.0dip"
@@ -156,7 +156,7 @@
     <RelativeLayout
         android:id="@+id/RelativeLayout01"
         android:layout_width="fill_parent"
-        android:layout_height="44.0dip"
+        android:layout_height="wrap_content"
         android:background="@drawable/login_bottom" >
 
         <ImageButton
@@ -172,7 +172,7 @@
         <Button
             android:id="@+id/login_btn_register"
             android:layout_width="130.0px"
-            android:layout_height="38.0px"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="注册" />
     </RelativeLayout>

@@ -36,7 +36,7 @@ public class HomeListAdapter extends BaseAdapter {
 		for (int i = 0; i < TYPE.length; i++) {
 			Map<String, Object> maplitong = new HashMap<String, Object>();
 			maplitong.put("text", TYPE[i]);
-			maplitong.put("img_pre", R.drawable.paopao);
+			maplitong.put("img_pre", R.drawable.main_home_item_mark);
 			listLitong.add(maplitong);
 		}
 
@@ -60,14 +60,15 @@ public class HomeListAdapter extends BaseAdapter {
 		if (convertView == null) {
 			holder = new Holder();
 			convertView = inflater.inflate(R.layout.main_home_list_item, null);
-			holder.picture = (ImageView) convertView.findViewById(R.id.img_pre);
-			holder.text = (TextView) convertView.findViewById(R.id.text);
-
+			holder.picture = (ImageView) convertView
+					.findViewById(R.id.home_list_img);
+			holder.text = (TextView) convertView
+					.findViewById(R.id.home_list_text);
 			convertView.setTag(holder);
 		} else {
 			holder = (Holder) convertView.getTag();
 		}
-		holder.picture.setImageResource(R.drawable.paopao);
+		holder.picture.setImageResource(R.drawable.main_home_item_mark);
 		holder.text.setText((String) list.get(position).get("text"));
 
 		return convertView;
