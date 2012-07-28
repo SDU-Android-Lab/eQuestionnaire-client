@@ -1,10 +1,6 @@
 package sdu.equestionnaire.activities;
 
 import sdu.equestionnaire.R;
-import sdu.equestionnaire.common.Message_Type;
-import sdu.equestionnaire.common.Messages;
-import sdu.equestionnaire.common.User;
-import sdu.equestionnaire.info.UserInfo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,14 +10,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
-	EditText register_nameE = (EditText) findViewById(R.id.account_name);
-	EditText register_phone_numberE = (EditText) findViewById(R.id.account_phoneNumber);
-	EditText register_provinceE = (EditText) findViewById(R.id.account_province);
-	EditText register_cityE = (EditText) findViewById(R.id.account_city);
-	EditText register_streetE = (EditText) findViewById(R.id.account_street);
-	EditText register_mailE = (EditText) findViewById(R.id.account_email);
-	Button register = (Button) findViewById(R.id.account_btn_apply);
-	Button cancel = (Button) findViewById(R.id.account_btn_cancel);
+	EditText register_nameE;
+	EditText register_phone_numberE;
+	EditText register_password;
+	EditText register_provinceE;
+	EditText register_cityE;
+	EditText register_streetE;
+	EditText register_mailE;
+	Button register;
+	Button cancel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +30,7 @@ public class RegisterActivity extends Activity {
 
 			public void onClick(View v) {
 				String name = register_nameE.getText().toString();
+				String passw = register_password.getText().toString();
 				String phone = register_phone_numberE.getText().toString();
 				String city = register_cityE.getText().toString();
 				String street = register_streetE.getText().toString();
@@ -41,11 +39,14 @@ public class RegisterActivity extends Activity {
 
 				if (name.length() == 0 || phone.length() == 0
 						|| city.length() == 0 || street.length() == 0
-						|| province.length() == 0 || mail.length() == 0) {
+						|| province.length() == 0 || mail.length() == 0
+						|| passw.length() == 0) {
 					Toast.makeText(RegisterActivity.this, "信息不能为空",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
+				Toast.makeText(RegisterActivity.this, "注册成功！您的账号是10011，请牢记",
+						Toast.LENGTH_LONG).show();
 				// } else {
 				// User p = new User();
 				// p.setName(name);
@@ -66,6 +67,7 @@ public class RegisterActivity extends Activity {
 	private void initWidget() {
 		register_nameE = (EditText) findViewById(R.id.register_name);
 		register_phone_numberE = (EditText) findViewById(R.id.register_phoneNumber);
+		register_password = (EditText) findViewById(R.id.register_password);
 		register_provinceE = (EditText) findViewById(R.id.register_province);
 		register_cityE = (EditText) findViewById(R.id.register_city);
 		register_streetE = (EditText) findViewById(R.id.register_street);

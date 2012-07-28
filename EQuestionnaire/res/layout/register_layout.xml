@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/main_back_bg"
+    android:layout_height="fill_parent"
+    android:background="@drawable/main_bg"
     android:orientation="vertical" >
 
     <ScrollView
@@ -63,6 +63,35 @@
                     android:gravity="center"
                     android:scaleType="fitCenter"
                     android:src="@drawable/contact_add_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15.0px"
+                android:layout_marginRight="15.0px"
+                android:layout_marginTop="10.0px"
+                android:background="@drawable/main_account_layoutbg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="密码:"
+                    android:textColor="#ff3f3f3f"
+                    android:textSize="16.0dip" />
+
+                <EditText
+                    android:id="@+id/register_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/main_account_edit_text"
+                    android:inputType="number"
+                    android:singleLine="true" />
             </LinearLayout>
 
             <LinearLayout
@@ -180,14 +209,12 @@
                     android:id="@+id/register_btn_apply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
                     android:text="注册" />
 
                 <Button
                     android:id="@+id/register_btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
                     android:text="取消" />
             </LinearLayout>
         </LinearLayout>

@@ -88,27 +88,32 @@
                 android:textColor="#ff3f3f3f"
                 android:textSize="16.0dip" />
 
-            <CheckBox
-                android:id="@+id/login_cb_savepwd"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/login_btn_login"
-                android:button="@drawable/login_btn_check"
-                android:checked="true"
-                android:paddingLeft="38.0px"
-                android:text="@string/login_opt_remember"
-                android:textColor="#ff222222"
-                android:textSize="16.0sp" />
-
-            <Button
-                android:id="@+id/login_btn_login"
-                android:layout_width="130.0px"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_below="@+id/TextView02"
-                android:layout_marginRight="12.0dip"
-                android:layout_marginTop="7.0px"
-                android:text="@string/login_in" />
+                android:gravity="center" >
+
+                <CheckBox
+                    android:id="@+id/login_cb_savepwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/login_btn_check"
+                    android:checked="true"
+                    android:paddingLeft="38.0px"
+                    android:text="@string/login_opt_remember"
+                    android:textColor="#ff222222"
+                    android:textSize="16.0sp" />
+
+                <Button
+                    android:id="@+id/login_btn_login"
+                    android:layout_width="130.0px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12.0dip"
+                    android:layout_marginTop="7.0px"
+                    android:text="@string/login_in" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <TableLayout
@@ -157,7 +162,7 @@
         android:id="@+id/RelativeLayout01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_bottom" >
+        android:background="@drawable/main_question_item_bg_sel" >
 
         <ImageButton
             android:id="@+id/login_option"
@@ -174,6 +179,7 @@
             android:layout_width="130.0px"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="注册" />
     </RelativeLayout>
 

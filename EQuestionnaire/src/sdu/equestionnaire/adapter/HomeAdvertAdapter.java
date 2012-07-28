@@ -12,9 +12,8 @@ import android.widget.ImageView;
 public class HomeAdvertAdapter extends BaseAdapter {
 	private int GalleryItemBackground;
 	private Context context;
-	private int[] picture = { R.drawable.gallery1, R.drawable.gallery2,
-			R.drawable.gallery3, R.drawable.gallery4, R.drawable.gallery5,
-			R.drawable.gallery6, };
+	private int[] picture = { R.drawable.advert01, R.drawable.advert02,
+			R.drawable.advert03, R.drawable.advert04, R.drawable.advert05, };
 
 	public HomeAdvertAdapter(Context context) {
 		this.context = context;

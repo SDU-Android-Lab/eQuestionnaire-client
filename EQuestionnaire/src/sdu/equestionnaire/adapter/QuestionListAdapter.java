@@ -30,7 +30,7 @@ public class QuestionListAdapter extends BaseAdapter {
 	private Context context;
 	private List<Map<String, Object>> listItems;
 	private LayoutInflater listInflater;
-	private String textContent = "i love eQuestionnaire";
+	private String textContent = "iclass手机客户端满意度调查";
 	private final int COUNT = 11;
 	private int pressedId;
 	private int itemCount;
@@ -57,9 +57,9 @@ public class QuestionListAdapter extends BaseAdapter {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("menuIcon", imageId);
 			if (i == 0) {
-				map.put("menuText", "i am acbuwa");
+				map.put("menuText", "济南乐呵呵纯牛奶口味调查");
 			} else if (i == 1) {
-				map.put("menuText", "i love carol");
+				map.put("menuText", "济南奔腾科技服务满意度调查");
 			} else {
 				map.put("menuText", textContent);
 			}
