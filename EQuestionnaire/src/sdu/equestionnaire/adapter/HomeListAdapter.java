@@ -18,12 +18,11 @@ public class HomeListAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
 	private Context context;
 	private List<Map<String, Object>> list = null;
-	static final String[] TYPE = { "男鞋", "女鞋", "更多分类", "新品", "品牌馆", "每日精品" };
+	static final String[] TYPE = { "济南乐呵呵纯牛奶口味调查", "iclass手机客户端满意度调查", };
 
 	public final class Holder {
 		ImageView picture;
 		TextView text;
-		ImageView navigation;
 	}
 
 	public HomeListAdapter(Context context) {
@@ -37,7 +36,6 @@ public class HomeListAdapter extends BaseAdapter {
 		for (int i = 0; i < TYPE.length; i++) {
 			Map<String, Object> maplitong = new HashMap<String, Object>();
 			maplitong.put("text", TYPE[i]);
-			maplitong.put("img", R.drawable.toright_mark);
 			maplitong.put("img_pre", R.drawable.paopao);
 			listLitong.add(maplitong);
 		}
@@ -64,14 +62,14 @@ public class HomeListAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.main_home_list_item, null);
 			holder.picture = (ImageView) convertView.findViewById(R.id.img_pre);
 			holder.text = (TextView) convertView.findViewById(R.id.text);
-			holder.navigation = (ImageView) convertView.findViewById(R.id.img);
+
 			convertView.setTag(holder);
 		} else {
 			holder = (Holder) convertView.getTag();
 		}
 		holder.picture.setImageResource(R.drawable.paopao);
 		holder.text.setText((String) list.get(position).get("text"));
-		holder.navigation.setImageResource(R.drawable.toright_mark);
+
 		return convertView;
 	}
 

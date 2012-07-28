@@ -45,18 +45,19 @@ public class RegisterActivity extends Activity {
 					Toast.makeText(RegisterActivity.this, "信息不能为空",
 							Toast.LENGTH_SHORT).show();
 					return;
-				} else {
-					User p = new User();
-					p.setName(name);
-					p.setPhone(phone);
-					p.setProvince(province);
-					p.setCity(city);
-					p.setStreet(street);
-					p.setEmail(mail);
-					Messages msg = new Messages(Message_Type.Regesiter, p);
-					UserInfo.m_cliient.sendmes(msg);
-					msg = (Messages) UserInfo.m_cliient.getMessage();
 				}
+				// } else {
+				// User p = new User();
+				// p.setName(name);
+				// p.setPhone(phone);
+				// p.setProvince(province);
+				// p.setCity(city);
+				// p.setStreet(street);
+				// p.setEmail(mail);
+				// Messages msg = new Messages(Message_Type.Regesiter, p);
+				// UserInfo.m_cliient.sendmes(msg);
+				// msg = (Messages) UserInfo.m_cliient.getMessage();
+				// }
 
 			}
 		});
@@ -71,6 +72,7 @@ public class RegisterActivity extends Activity {
 		register_mailE = (EditText) findViewById(R.id.register_email);
 		register = (Button) findViewById(R.id.register_btn_apply);
 		cancel = (Button) findViewById(R.id.register_btn_cancel);
+
 		register_nameE.setText("");
 		register_phone_numberE.setText("");
 		register_provinceE.setText("");
